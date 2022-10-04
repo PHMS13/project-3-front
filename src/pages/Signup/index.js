@@ -130,9 +130,29 @@ export function Signup() {
         id="formName"
         name="name"
         type="text"
-        value={form.name}
+        value={form.region}
         onChange={handleChange}
       />
+
+<label htmlFor="formCountry">País:</label>
+      <input
+        id="formCountry"
+        name="country"
+        type="text"
+        value={form.country}
+        onChange={handleChange}
+      />
+
+<label htmlFor="formCity">Cidade:</label>
+      <input
+        id="formCity"
+        name="city"
+        type="text"
+        value={form.city}
+        onChange={handleChange}
+      />
+
+      
 
       <button type="submit">Cadastrar</button>
     </form>
