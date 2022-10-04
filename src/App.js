@@ -24,7 +24,7 @@ function App() {
             path="/profile"
             element={<ProtectedRoute component={Profile} />}
           />
-          <Route path="/mygarden" element={<MyGarden />} />
+          <Route path="/my-garden/:idGarden" element={<MyGarden />} />
           <Route path="/gardener" element={<Gardener />} />
           <Route path="/allplants" element={<AllPlants />} />
           <Route path="*" element={<ErrorPage />} />
