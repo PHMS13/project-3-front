@@ -9,6 +9,12 @@ export function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    profileImage: "",
+    age: "",
+    region: "",
+    country: "",
+    city:"",
+    residance: "",
   });
 
   const [img, setImg] = useState("");

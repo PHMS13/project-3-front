@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
+import  Home  from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { ErrorPage } from "./pages/ErrorPage";
+import ProtectedRoute from "./components"
+import NavBar from "./components/NavBar";
 
 import "./App.css";
 import MyGarden from "./pages/MyGarden";
@@ -15,6 +17,7 @@ import AllPlants from "./pages/Allplants";
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Home />} />
