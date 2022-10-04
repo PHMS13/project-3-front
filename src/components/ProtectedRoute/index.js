@@ -5,14 +5,13 @@ export function ProtectedRoute(props) {
   const { component: Component } = props;
   const navigate = useNavigate();
 
-  const loggedInUser = localStorage.getItem("loggedInUser");
-
-  const parsedUser = JSON.parse(loggedInUser || '""');
-
   useEffect(() => {
-    console.log(parsedUser);
-    if (parsedUser.user.role !== "ADMIN") {
-      navigate("/login");
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    const parsedUser = JSON.parse(loggedInUser || '""');
+
+    if (parsedUser) {
+      navigate("/profile");
     }
   }, []);
 
