@@ -5,8 +5,7 @@ import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import { ErrorPage } from "./pages/ErrorPage";
-import ProtectedRoute from "./components"
+import  ErrorPage  from "./pages/ErrorPage";
 import NavBar from "./components/NavBar";
 
 import "./App.css";
