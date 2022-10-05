@@ -7,7 +7,7 @@ export function Signup() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -15,8 +15,9 @@ export function Signup() {
     age: "",
     region: "",
     country: "",
-    city:"",
-    residance: "",
+    city: "",
+    residence: "",
+    livingSpace: "",
   });
 
   const [img, setImg] = useState("");
@@ -31,20 +32,19 @@ export function Signup() {
   }
 
   useEffect(() => {
-
     if (!img) {
-      setPreview(undefined)
-      return
+      setPreview(undefined);
+      return;
     }
-    
-    const objectURL = URL.createObjectURL(img)
-    setPreview(objectURL)
 
-/*     const objectURL = URL.createObjectURL(img)
+    const objectURL = URL.createObjectURL(img);
+    setPreview(objectURL);
+
+    /*     const objectURL = URL.createObjectURL(img)
   setPreview(objectURL)
 */
-  return () => URL.revokeObjectURL(objectURL)
-}, [img])
+    return () => URL.revokeObjectURL(objectURL);
+  }, [img]);
 
   async function handleUpload() {
     try {
@@ -78,16 +78,16 @@ export function Signup() {
     <form onSubmit={handleSubmit}>
       <label htmlFor="formName">Nome:</label>
       <input
-        id="formName"
-        name="name"
+        id="form"
+        name="username"
         type="text"
-        value={form.name}
+        value={form.username}
         onChange={handleChange}
       />
 
       <label htmlFor="formEmail">E-mail:</label>
       <input
-        id="formEmail"
+        id="form"
         name="email"
         type="email"
         value={form.email}
@@ -96,65 +96,102 @@ export function Signup() {
 
       <label htmlFor="formPassword">Senha:</label>
       <input
-        id="formPassword"
+        id="form"
         name="password"
         type="password"
         value={form.password}
         onChange={handleChange}
       />
 
-      <label htmlFor="formConfirmPassword">Confirmação de senha</label>
+      <label htmlFor="formConfirmPassword">Confirmação de senha:</label>
       <input
-        id="formConfirmPassword"
+        id="form"
         type="password"
         name="confirmPassword"
         value={form.confirmPassword}
         onChange={handleChange}
       />
 
-      <label htmlFor="formImg">Sua foto de perfil:</label>
-      <input type="file" onChange={handleImage} />
+      <label htmlFor="formImg">Foto de perfil:</label>
+      <input
+        id="formImg"
+        nam="profileImage"
+        type="file"
+        onChange={handleImage}
+      />
       {img && <img src={preview} alt="" />}
 
       <label htmlFor="formAge">Idade:</label>
       <input
-        id="formAge"
+        id="form"
         name="age"
         type="text"
         value={form.age}
         onChange={handleChange}
       />
 
-<label htmlFor="formRegion">Região:</label>
+      <label htmlFor="formRegion">Região:</label>
       <input
-        id="formName"
-        name="name"
+        id="form"
+        name="region"
         type="text"
         value={form.region}
         onChange={handleChange}
       />
 
-<label htmlFor="formCountry">País:</label>
+      <label htmlFor="formCountry">País:</label>
       <input
-        id="formCountry"
+        id="form"
         name="country"
         type="text"
         value={form.country}
         onChange={handleChange}
       />
 
-<label htmlFor="formCity">Cidade:</label>
+      <label htmlFor="formCity">Cidade:</label>
       <input
-        id="formCity"
+        id="form"
         name="city"
         type="text"
         value={form.city}
         onChange={handleChange}
       />
 
-      
+      <label id="label" htmlFor="formLivingSpace">Cômodo:</label>
+      <select
+        required
+        id="formSelect"
+        name="livingSpace"
+        onChange={handleChange}
+        defaultValue={form.livingSpace}
+      >
+        <option value=""></option>
+        <option value="Sala">Sala</option>
+        <option value="Banheiro">Banheiro</option>
+        <option value="Cozinha">Cozinha</option>
+        <option value="Jardim">Jardim</option>
+        <option value="Varanda">Varanda</option>
+        <option value="Lavanderia">Lavanderia</option>
+        <option value="Quarto">Quarto</option>
+        <option value="Outros">Outros</option>
+      </select>
 
-      <button type="submit">Cadastrar</button>
+      <label id="label" htmlFor="formResidence">Residência:</label>
+      <select
+        required
+        id="formSelect"
+        name="residence"
+        onChange={handleChange}
+        defaultValue={form.residence}
+      >
+        <option value=""></option>
+        <option value="Apartamento">Apartamento</option>
+        <option value="Casa">Casa</option>
+        <option value="Sítio">Sítio</option>
+        <option value="Escritório">Escritório</option>
+      </select>
+
+      <button id="btnCadastrar" type="submit">Cadastrar</button>
     </form>
   );
 }

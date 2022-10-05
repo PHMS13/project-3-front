@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@300;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@300;700;900&display=swap");
 
 .App {
   text-align: center;
-  background: #EDDDD6;
+  background: #edddd6;
+  height: 100vh;
 }
 
 .App-logo {
@@ -81,6 +82,29 @@
   margin-top: 0vh;
 }
 
+#btnCadastrar {
+  margin-top: 13px;
+}
+
+form {
+  margin-top: 180px;
+}
+
+#form {
+  width: 180px;
+  margin-top: 15px;
+}
+
+#formImg {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+  margin-top: 13px;
+}
+
+#formSelect {
+  margin-top: 13px;
+}
+
 .dropdown > button {
   background-color: rgba(0, 0, 0, 0) !important;
   border-color: rgba(0, 0, 0, 0);
@@ -116,22 +140,21 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 12px;
-  border-color: #EDDDD6;
+  border-color: #edddd6;
   font-size: 14px;
   font-family: "Lato", sans-serif;
   font-weight: 700;
   width: 30vw;
 }
 
-
 .h5 {
   font-size: 18px !important;
-  color: #2B2B2B !important;
+  color: #2b2b2b !important;
 }
 
 .h6 {
   font-size: 14px !important;
-  color: #2B2B2B !important;
+  color: #2b2b2b !important;
 }
 
 .createSubtitle {
@@ -140,7 +163,7 @@
   text-align: left;
   color: #7c6053;
   width: 80px;
-  background-image: url('./assets/02\ -\ Criar\ Perfil.png');
+  background-image: url("./assets/02\ -\ Criar\ Perfil.png");
 }
 
 .createImg {
@@ -149,7 +172,7 @@
 }
 
 .createFormBackground {
-  background-color: #D1B3AE;
+  background-color: #d1b3ae;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -200,7 +223,7 @@ Form {
   font-size: 14px;
   font-weight: 700;
   color: white;
-  background-color: #7C6053;
+  background-color: #7c6053;
   border-radius: 8px;
   padding: 8px;
   padding-left: 16px;
@@ -210,11 +233,10 @@ Form {
 .createSalvar {
   width: 100px;
   margin-top: 10px;
-  background-color: #7C6053 !important;
+  background-color: #7c6053 !important;
   font-family: "Lato", sans-serif !important;
   font-size: 16px !important;
   font-weight: 700 !important;
-
 }
 
 .barraSup {
@@ -241,8 +263,8 @@ Form {
   font-family: "Lato", sans-serif;
   font-weight: 600;
   color: white;
-  background-color: #7C6053;
-  border-color: #7C6053;
+  background-color: #7c6053;
+  border-color: #7c6053;
 }
 
 .userNome {
@@ -268,8 +290,8 @@ Form {
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 8px;
-  background-color: #7C6053;
-  border-color: #7C6053;
+  background-color: #7c6053;
+  border-color: #7c6053;
   font-family: "Lato", sans-serif;
   font-weight: 600;
   color: white;
@@ -292,7 +314,7 @@ Form {
 .SubAll {
   font-size: 20px;
   font-family: "Lato", sans-serif;
-  color: #7C6053;
+  color: #7c6053;
   font-weight: 900;
   text-align: left;
   margin-left: 25px;
@@ -308,7 +330,7 @@ Form {
 .subAbout {
   font-size: 20px;
   font-family: "Lato", sans-serif;
-  color: #7C6053;
+  color: #7c6053;
   font-weight: 900;
   text-align: left;
   margin: 25px;
@@ -329,7 +351,7 @@ Form {
 .finalCriadores {
   font-size: 25px;
   font-family: "Lato", sans-serif;
-  color: #D1B3AE;
+  color: #d1b3ae;
   font-weight: 900;
   text-align: center;
   margin: 25px;

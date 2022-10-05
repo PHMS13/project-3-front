@@ -14,6 +14,7 @@ import "./App.css";
 import MyGarden from "./pages/MyGarden";
 import Gardener from "./pages/Gardener";
 import AllPlants from "./pages/Allplants";
+import { UserProfile } from "./pages/UserProfile";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           {/* all users + searchbar */}
           <Route path="/gardener/:idUser" element={<UserProfile />} />{" "}
           {/* pagina de um user */}
+
           <Route path="/allplants" element={<AllPlants />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />
