@@ -47,7 +47,6 @@ function EditUser({
     }
   }
 
-
   return (
     <Modal show={showForm} onHide={() => setShowForm(false)}>
       <Modal.Header closeButton>
@@ -57,7 +56,7 @@ function EditUser({
         <Form style={{height:"230px"}}>
           <Form.Label><strong>Nome</strong></Form.Label>
           <Form.Control name="nome" value={form.nome} onChange={handleChange} 
-          style={{
+            style={{
             marginBottom:"20px"}}/>
 
           <Form.Label><strong>Idade</strong></Form.Label>
