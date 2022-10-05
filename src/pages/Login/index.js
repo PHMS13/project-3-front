@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
-export function Login() {
+function Login() {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -52,3 +52,5 @@ export function Login() {
     </form>
   );
 }
+
+export default Login

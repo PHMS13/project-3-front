@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export function Signup() {
+function Signup() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -195,3 +195,5 @@ export function Signup() {
     </form>
   );
 }
+
+export default Signup

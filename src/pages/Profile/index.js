@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
-export function Profile() {
+function Profile() {
   // const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
   // useEffect(() => {
@@ -30,6 +30,8 @@ export function Profile() {
     </>
   );
 }
+
+export default Profile
 
 //info user -> /users/profile+edit+delete
 /* Criar jardim -> /gardens/create
