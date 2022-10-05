@@ -79,6 +79,8 @@ function MyGarden() {
         <button type="submit">Adicionar uma planta</button>
       </div>
 
+        --! essa parte ainda falta 
+
       <button>Editar Jardim</button>
       <p>form de edicao de jardim</p>
       <p>pra qual rota: /garden/edit/idGarden</p>
