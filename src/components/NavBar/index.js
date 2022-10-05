@@ -22,7 +22,7 @@ function NavBar() {
         }}
       >
       <Link to="/" style={{marginLeft:"0px", width:"48%"}}>
-        <img src={logo} alt="logo" style={{ width: "100%", marginTop:"0px" }}/>
+        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"540px", marginTop:"0px" }}/>
       </Link>
 
         <Dropdown>

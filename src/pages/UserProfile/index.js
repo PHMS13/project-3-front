@@ -1,4 +1,5 @@
 
+
 function UserProfile() {
     return ( 
         <h1> user Profile</h1>
@@ -6,4 +7,5 @@ function UserProfile() {
 }
 
 export default UserProfile;
+
 

@@ -1,19 +1,26 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import { AuthContextComponent } from "./contexts/authContext";
-import Profile from "./pages/Profile";
+
+
+import {AuthContextComponent} from "./contexts/authContext";
+
 import ProtectedRoute from "./components/ProtectedRoute";
-import AboutUs from "./pages/AboutUs";
-import ErrorPage from "./pages/ErrorPage";
+
 import NavBar from "./components/NavBar";
 import UserProfile from "./pages/UserProfile";
 
-import "./App.css";
+import Home  from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import AboutUs from "./pages/AboutUs";
+import ErrorPage  from "./pages/ErrorPage";
 import MyGarden from "./pages/MyGarden";
 import Gardener from "./pages/Gardener";
 import AllPlants from "./pages/Allplants";
+
+import UserProfile from "./pages/UserProfile";
+
 
 function App() {
   return (
