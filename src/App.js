@@ -5,6 +5,7 @@ import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import AboutUs from "./pages/AboutUs";
 import  ErrorPage  from "./pages/ErrorPage";
 import NavBar from "./components/NavBar";
 
@@ -26,10 +27,12 @@ function App() {
             path="/profile"
             element={<ProtectedRoute component={Profile} />}
           />
-          <Route path="/my-garden/:idGarden" element={<MyGarden />} />
-          <Route path="/gardener" element={<Gardener />} />
+          <Route path="/mygarden/:idGarden" element={<MyGarden />} /> // pagina de detalhe do garden
+          <Route path="/gardener" element={<Gardener />} /> // all users + searchbar
+          <Route path="/gardener/:idUser" element={<UserProfilec />} /> // pagina de um user
           <Route path="/allplants" element={<AllPlants />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="*" element={<ErrorPage />} />git
         </Routes>
       </AuthContextComponent>
     </div>
