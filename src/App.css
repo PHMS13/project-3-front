@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@300;700;900&display=swap");
+
 .App {
   text-align: center;
+  background: #edddd6;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +39,330 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.homePageHero {
+  width: 90vw;
+  min-height: 100vh;
+  background-color: #EDDDD6;
+  text-align: left;
+  margin-top: 0px;
+}
+
+.homeBackground {
+  background-image: url("./assets/MobileShort.png");
+  background-size: cover;
+  max-width: 800px;
+}
+
+.homeBody {
+  width: 104vw;
+  height: 100vh;
+}
+
+.homeInicio {
+  background-color: #7c6053;
+  color: whitesmoke;
+  padding: 9px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  border-color: #7c6053;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  width: 30vw;
+}
+
+.homeTxtInicio {
+  width: 630px;
+  font-size: 16px;
+  margin: 30px;
+  margin-top: 40vh;
+  text-align: justify;
+  font-family: "Lato", sans-serif;
+  color: whitesmoke;
+  font-weight: 600;
+}
+
+.homeBody {
+  width: 80vw;
+  margin-top: 0vh;
+}
+
+#btnCadastrar {
+  margin-top: 13px;
+}
+
+form {
+  margin-top: 180px;
+}
+
+#form {
+  width: 180px;
+  margin-top: 15px;
+}
+
+#formImg {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+  margin-top: 13px;
+}
+
+#formSelect {
+  margin-top: 13px;
+}
+
+.dropdown > button {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+  width: 50px;
+}
+.dropdown > button:hover {
+  border-color: rgba(0, 0, 0, 0) !important;
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+.profilesPageMain {
+  background-image: url("./assets/04\ -\ Perfis\ teste02.png");
+  background-size: cover;
+}
+
+.profilesSub {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  color: #7c6053;
+  font-weight: 900;
+  text-align: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+.profilesCrie {
+  background-color: #7c6053;
+  color: whitesmoke;
+  margin-top: 30px;
+  padding: 9px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  border-color: #edddd6;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  width: 30vw;
+}
+
+.h5 {
+  font-size: 18px !important;
+  color: #2b2b2b !important;
+}
+
+.h6 {
+  font-size: 14px !important;
+  color: #2b2b2b !important;
+}
+
+.createSubtitle {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  text-align: left;
+  color: #7c6053;
+  width: 80px;
+  background-image: url("./assets/02\ -\ Criar\ Perfil.png");
+}
+
+.createImg {
+  margin-top: 20px;
+  width: 65vw;
+}
+
+.createFormBackground {
+  background-color: #d1b3ae;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.createForm {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #414141;
+  background-color: white;
+  margin: 25px;
+  border-radius: 15px;
+  height: 400px;
+}
+
+.createForm > input {
+  font-size: 12px;
+}
+
+Form {
+  width: 90vw;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#formBasicEmail {
+  width: 70vw;
+}
+
+.quizPergunta {
+  font-family: "Lato", sans-serif;
+  margin: 25px;
+}
+
+.quizElemento {
+  font-family: "Lato", sans-serif;
+  margin: 8px;
+}
+
+.finalizarQuiz {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  background-color: #7c6053;
+  border-radius: 8px;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.createSalvar {
+  width: 100px;
+  margin-top: 10px;
+  background-color: #7c6053 !important;
+  font-family: "Lato", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.barraSup {
+  margin: 20px;
+  margin-top: 40px;
+  padding: 12px;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-family: "Lato", sans-serif;
+  border-radius: 10px;
+}
+
+.retirarJar {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: white;
+  background-color: #7c6053;
+  border-color: #7c6053;
+}
+
+.userNome {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.AllSub {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  color: #7c6053;
+  font-weight: 900;
+  text-align: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+.btnCardAll {
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px;
+  background-color: #7c6053;
+  border-color: #7c6053;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.profileImg {
+  margin-top: 80px;
+  width: 76vw;
+  max-width: 560px;
+  background-size: cover;
+}
+
+.imgAllPlants {
+  margin-top: 80px;
+  width: 74vw;
+  max-width: 560px;
+  background-size: cover;
+}
+
+.SubAll {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  color: #7c6053;
+  font-weight: 900;
+  text-align: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+.modal-body {
+  height: 280px;
+  margin-top: 20px;
+}
+
+.subAbout {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  color: #7c6053;
+  font-weight: 900;
+  text-align: left;
+  margin: 25px;
+  margin-bottom: 60px;
+  margin-top: 40px;
+  margin-right: 0px;
+}
+
+.nomeAbout {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  color: #414141;
+  font-weight: 900;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.finalCriadores {
+  font-size: 25px;
+  font-family: "Lato", sans-serif;
+  color: #d1b3ae;
+  font-weight: 900;
+  text-align: center;
+  margin: 25px;
+  margin-bottom: 14px;
+  margin-top: 40px;
 }
