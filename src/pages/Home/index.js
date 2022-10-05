@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="homePageHero">
+      <div className="homeBackground">
       <div className="homeBody">
         <p className="homeTxtInicio">
           Nosso projeto tem o intuito de te ajudar a encontrar a planta que mais
@@ -18,6 +19,7 @@ function Home() {
         <Link to="/login">
         <button className="homeInicio">Acesse sua conta</button>
         </Link>
+      </div>
 
       </div>
     </div>
