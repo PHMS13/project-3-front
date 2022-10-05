@@ -1,17 +1,23 @@
+
 import { useEffect, useState } from "react";
+
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
 import MyGarden from "../../components/MyGarden";
+
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
+import AllPlants from "../Allplants";
+
 
 import { Button, Accordion } from "react-bootstrap";
 
 function Profile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
+
   const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -33,6 +39,7 @@ function Profile() {
 
   console.log(formGarden);
 
+
   //states das perguntas
   const [luminosidade, setLuminosidade] = useState(0);
   const [cuidado, setCuidado] = useState(0);
@@ -44,12 +51,14 @@ function Profile() {
     country: "",
     city: "",
     residence: "",
+    garden: [],
   });
 
   useEffect(() => {
     async function fetchUser() {
       setIsLoading(true);
       try {
+      
         const response = await api.get("/users/profile");
         setUser(response.data);
 
@@ -72,7 +81,9 @@ function Profile() {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
     navigate("/");
+
   }
+  console.log(user);
 
   async function handleSubmitGarden(e) {
     e.preventDefault();
@@ -109,6 +120,7 @@ function Profile() {
           <strong>Moradia:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
+
 
         <Button
           onClick={() => setShowForm(!showForm)}
@@ -158,7 +170,6 @@ function Profile() {
             </>
           )}
         </Accordion>
-
         <div>
           <div>
             <p>DIV DO FORM DE CRIAÇÃO DO GARDEN</p>
