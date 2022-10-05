@@ -10,24 +10,26 @@ import { api } from "../../api/api";
 function MyGarden() {
   const [oneGarden, setOneGarden] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const [form, setForm] = {
-    popularName: "",
-  };
+  const [reload, setReload] = useState(true);
 
-  //pegar o ID DO GARDEN da url. http://localhost:4000/my-garden/:idGarden  ==>> useParams
   const { idGarden } = useParams();
-  console.log(idGarden);
-  //useEffect pra pegar O JARDIM com o id do jardim que veio da url
-  //qual rota: /garden/one-garden/:idGarden
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    popularName: "",
+    scientificName: "",
+    origin: "",
+    luminosity: "", //TIPO NUMBER
+    care: "", //TIPE NUMBER
+    info: "",
+  });
 
   useEffect(() => {
     async function fetchmyGarden() {
       try {
         setIsLoading(true);
         const response = await api.get(`/garden/one-garden/${idGarden}`);
-        setOneGarden({ ...response.data });
-        //navigate("/my-garden");
+        setOneGarden(response.data);
 
         setIsLoading(false);
       } catch (error) {
@@ -35,48 +37,93 @@ function MyGarden() {
       }
     }
     fetchmyGarden();
-  }, []);
+  }, [reload]);
 
-  //fazer um map dessa array que voltou da api.
-  console.log(form);
+  //fazer um map dessa array que voltou da api. oneGarden.plants.map()
 
   function handleChange(e) {
+    if (e.target.name === "luminosity" || e.target.name === "care") {
+      setForm({ ...form, [e.target.name]: +e.target.value });
+      return;
+    }
 
+    setForm({ ...form, [e.target.name]: e.target.value });
   }
 
   async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post(`/plant/create/${idGarden}`, form);
+      console.log(response);
+      setReload(!reload);
 
+      setForm({
+        popularName: "",
+        scientificName: "",
+        origin: "",
+        luminosity: "", //TIPO NUMBER
+        care: "", //TIPE NUMBER
+        info: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  console.log(oneGarden);
+  console.log(form);
   return (
     <div>
-      <p>Aqui vc vai dar um map em todas as plantas do meu jardim</p>
-      {!isLoading &&
-        oneGarden.plants.map((plant) => {
-          return (
-            <div>
-              {" "}
-              card da planta
-              <p>nome da planta</p>
-              <p>nome cientifico</p>
-              <p>care</p>
-            </div>
-          );
-        })}
-
-      <h1>Local: {oneGarden.local}</h1>
+      <h1>Local: {oneGarden.local} </h1>
+      <h2>nome do jardim: {oneGarden.name}</h2>
 
       <div>
-        <h1>form de adicao de planta</h1>
+        {!isLoading &&
+          oneGarden.plants.map((plant) => {
+            return (
+              <div> CARDS DAS PLANTAS
+                <h1>{plant.popularName}</h1>
+              </div>
+            );
+          })}
+      </div>
+
+      <div>
+        <h1>adicione uma planta</h1>
         <p>pra qual rota: /plant/create</p>
 
         <form onSubmit={handleSubmit}>
+          <label>Nome popular</label>
           <input
             name="popularName"
             value={form.popularName}
             onChange={handleChange}
           />
+
+          <label>scientificName</label>
+          <input
+            name="scientificName"
+            value={form.scientificName}
+            onChange={handleChange}
+          />
+
+          <label>origin</label>
+          <input name="origin" value={form.origin} onChange={handleChange} />
+
+          <label>care</label>
+          <input name="care" value={form.care} onChange={handleChange} />
+
+          <label>luminosity</label>
+          <input
+            name="luminosity"
+            value={form.luminosity}
+            onChange={handleChange}
+          />
+
+          <label>info</label>
+          <input name="info" value={form.info} onChange={handleChange} />
+          <button type="submit">Adicionar uma planta</button>
         </form>
-        <button type="submit">Adicionar uma planta</button>
       </div>
 
       <button>Editar Jardim</button>
