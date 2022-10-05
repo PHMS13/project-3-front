@@ -158,4 +158,10 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Profile
+
+//info user -> /users/profile+edit+delete
+/* Criar jardim -> /gardens/create
+meus jardins (card)
+quizz
+*/

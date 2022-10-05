@@ -11,6 +11,7 @@ function NavBar() {
 
       <div
         style={{
+          width: "80vw",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -22,7 +23,7 @@ function NavBar() {
         }}
       >
       <Link to="/" style={{marginLeft:"0px", width:"48%"}}>
-        <img src={logo} alt="logo" style={{ width: "100%", marginTop:"0px" }}/>
+        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"300px", minWidth:"160px", marginTop:"0px" }}/>
       </Link>
 
         <Dropdown>
@@ -34,17 +35,18 @@ function NavBar() {
       <Link to="/">
         <Dropdown.Item href="#/action-1">Início</Dropdown.Item>
       </Link>
-      <Link to="/about">
-        <Dropdown.Item href="#/action-2">Sobre nós</Dropdown.Item>
+
+      <Link to="/profile">
+        <Dropdown.Item href="#/action-2">Meu perfil</Dropdown.Item>
       </Link>
-      <Link to="/">
-        <Dropdown.Item href="#/action-3">Perfis</Dropdown.Item>
+      <Link to="/gardener">
+        <Dropdown.Item href="#/action-4">Outros jardineiros</Dropdown.Item>
       </Link>
       <Link to="/allplants">
-        <Dropdown.Item href="#/action-4">Todas as plantas</Dropdown.Item>
+        <Dropdown.Item href="#/action-5">Todas as plantas</Dropdown.Item>
       </Link>
       <Link to="/about">
-        <Dropdown.Item href="#/action-5">Sobre nós</Dropdown.Item>
+        <Dropdown.Item href="#/action-6">Sobre nós</Dropdown.Item>
       </Link>
       <Link to="/profile">
         <Dropdown.Item href="#/action-5">Meu perfil</Dropdown.Item>
