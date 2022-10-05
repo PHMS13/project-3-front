@@ -8,6 +8,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import AboutUs from "./pages/AboutUs";
 import ErrorPage from "./pages/ErrorPage";
 import NavBar from "./components/NavBar";
+import UserProfile from "./pages/UserProfile";
 
 import "./App.css";
 import MyGarden from "./pages/MyGarden";
@@ -31,7 +32,7 @@ function App() {
           {/*  pagina de detalhe do garden */}
           <Route path="/gardener" element={<Gardener />} />{" "}
           {/* all users + searchbar */}
-          <Route path="/gardener/:idUser" element={<UserProfilec />} />{" "}
+          <Route path="/gardener/:idUser" element={<UserProfile />} />{" "}
           {/* pagina de um user */}
           <Route path="/allplants" element={<AllPlants />} />
           <Route path="/about" element={<AboutUs />} />
