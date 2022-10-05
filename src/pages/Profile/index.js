@@ -1,27 +1,44 @@
-import { useEffect, useState, useContext, useParams } from "react";
+
+import { useEffect, useState } from "react";
+
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
 import MyGarden from "../../components/MyGarden";
-import profile from "../../assets/05 - Imagem.png";
-import Quizz from "../../components/Quizz";
+
+import profileImage from "../../assets/05 - Imagem.png";
+import Quiz from "../Quiz";
 import AllPlants from "../Allplants";
+
 
 import { Button, Accordion } from "react-bootstrap";
 
 function Profile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
 
-  const { id } = useParams();
-
-  const [user, setUser] = useState({
-    
-  });
-  const [showForm, setShowForm] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
+
+  const [img, setImg] = useState("");
+  const [reload, setReload] = useState(true);
+
+  const [showForm, setShowForm] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [formGarden, setFormGarden] = useState({
+    name: "",
+    local: "",
+  });
+
+  function handleChange(e) {
+    setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
+  }
+
+  console.log(formGarden);
+
 
   //states das perguntas
   const [luminosidade, setLuminosidade] = useState(0);
@@ -33,6 +50,7 @@ function Profile() {
     age: "",
     country: "",
     city: "",
+    residence: "",
     garden: [],
   });
 
@@ -40,9 +58,10 @@ function Profile() {
     async function fetchUser() {
       setIsLoading(true);
       try {
-        const response = await api.get("/user/profile");
-
+      
+        const response = await api.get("/users/profile");
         setUser(response.data);
+
         setForm(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -50,14 +69,38 @@ function Profile() {
       }
     }
     fetchUser();
-  }, [id, reload]);
+  }, [reload]);
 
-  function handleAccordion() {
+  /*   function handleAccordion() {
     console.log("dentro da funcao");
     setReload(!reload);
+  } */
+  console.log(user);
+
+  function handleLogOut(e) {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser");
+    navigate("/");
+
   }
   console.log(user);
 
+  async function handleSubmitGarden(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post(`/garden/create`, formGarden);
+
+      setReload(!reload);
+      setFormGarden({
+        name: "",
+        local: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(user);
   return (
     <div>
       <div
@@ -66,16 +109,18 @@ function Profile() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-        }}>
+        }}
+      >
         <h1 className="AllSub">Perfil</h1>
-        <img src={profile} alt="plantinha" className="profileImg" />
+        <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
       <div className="barraSup">
-        <span className="userNome">{user.nome}</span>
+        <span className="username">{user.username}</span>
         <span>
-          <strong>Moradia:</strong> {user.moradia} |
+          <strong>Moradia:</strong> {user.residence} |
         </span>
-        <span style={{ marginRight: "12px" }}>{user.idade} anos</span>
+        <span style={{ marginRight: "12px" }}>{user.age} anos</span>
+
 
         <Button
           onClick={() => setShowForm(!showForm)}
@@ -84,15 +129,17 @@ function Profile() {
             backgroundColor: "#7C6053",
             color: "white",
             borderColor: "#7C6053",
-          }}>
+          }}
+        >
           Editar Perfil
         </Button>
+        <button onClick={handleLogOut}>Logout</button>
       </div>
 
       {showForm === true && (
         <EditUser
           form={form}
-          id={id}
+          id={user._id}
           setShowForm={setShowForm}
           setForm={setForm}
           reload={reload}
@@ -103,47 +150,17 @@ function Profile() {
 
       <div className="mt-3">
         <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header onClick={handleAccordion}>
-              Meu Jardim
-            </Accordion.Header>
-            <Accordion.Body>
-              <MyGarden
-                user={user}
-                id={id}
-                showForm={showForm}
-                setShowForm={setShowForm}
-                reload={reload}
-                setReload={setReload}
-                isLoading={isLoading}
-              />
-            </Accordion.Body>
-          </Accordion.Item>
-
           {!isLoading && (
             <>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Todas as Plantas</Accordion.Header>
-                <Accordion.Body>
-                  <AllPlants
-                    id={id}
-                    user={user}
-                    reload={reload}
-                    setReload={setReload}
-                    showForm={showForm}
-                    setShowForm={setShowForm}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Quiz de Plantas</Accordion.Header>
                 <Accordion.Body>
-                  <Quizz
+                  <Quiz
                     luminosidade={luminosidade}
                     cuidado={cuidado}
                     setCuidado={setCuidado}
                     setLuminosidade={setLuminosidade}
-                    id={id}
+                    id={user._id}
                     user={user}
                     reload={reload}
                     setReload={setReload}
@@ -153,15 +170,95 @@ function Profile() {
             </>
           )}
         </Accordion>
+        <div>
+          <div>
+            <p>DIV DO FORM DE CRIAÇÃO DO GARDEN</p>
+            <form onSubmit={handleSubmitGarden}>
+              <label>Nome do jardim</label>
+              <input
+                name="name"
+                value={formGarden.name}
+                onChange={handleChange}
+              />
+
+              <label>Local do Jardim</label>
+              <input
+                name="local"
+                value={formGarden.local}
+                onChange={handleChange}
+              />
+              <button type="submit">salvar jardim</button>
+            </form>
+          </div>
+
+          <h1>Meus Jardins</h1>
+          {!isLoading &&
+            user.garden.map((garden) => {
+              const date = new Date(garden.createdAt);
+
+              const dd = date.getDate();
+              const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
+              const aa = date.getFullYear();
+
+              const hh = date.getHours();
+              const min = date.getMinutes();
+              console.log(garden);
+              return (
+                <div>
+                  <p>
+                    nome: {garden.name} - local: {garden.local}- postado em:{" "}
+                    {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                  </p>
+                  <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
+                  {garden.comments.length > 0 && <h2>Comentários:</h2>}
+                  {garden.comments.map((comments) => {
+                    return comments;
+                  })}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
 }
 
-export default Profile
+export default Profile;
 
 //info user -> /users/profile+edit+delete
 /* Criar jardim -> /gardens/create
 meus jardins (card)
-quizz
+quiz
 */
+
+/* <Accordion.Item eventKey="0">
+<Accordion.Header onClick={handleAccordion}>
+  Meu Jardim
+</Accordion.Header>
+<Accordion.Body>
+  <MyGarden
+    user={user}
+    id={user._id}
+    showForm={showForm}
+    setShowForm={setShowForm}
+    reload={reload}
+    setReload={setReload}
+    isLoading={isLoading}
+  />
+</Accordion.Body>
+</Accordion.Item> 
+
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>Todas as Plantas</Accordion.Header>
+                <Accordion.Body>
+                  <AllPlants
+                    id={user._id}
+                    user={user}
+                    reload={reload}
+                    setReload={setReload}
+                    showForm={showForm}
+                    setShowForm={setShowForm}
+                  />
+                </Accordion.Body>
+              </Accordion.Item>
+            */
