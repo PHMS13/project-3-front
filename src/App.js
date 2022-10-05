@@ -1,14 +1,12 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-
 import {AuthContextComponent} from "./contexts/authContext";
 
 import ProtectedRoute from "./components/ProtectedRoute";
-
 import NavBar from "./components/NavBar";
-import UserProfile from "./pages/UserProfile";
 
+import UserProfile from "./pages/UserProfile";
 import Home  from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -18,8 +16,6 @@ import ErrorPage  from "./pages/ErrorPage";
 import MyGarden from "./pages/MyGarden";
 import Gardener from "./pages/Gardener";
 import AllPlants from "./pages/Allplants";
-
-import UserProfile from "./pages/UserProfile";
 
 
 function App() {
