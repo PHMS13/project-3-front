@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import  Home  from "./pages/Home";
+import { Home }  from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
@@ -13,6 +13,7 @@ import "./App.css";
 import MyGarden from "./pages/MyGarden";
 import Gardener from "./pages/Gardener";
 import AllPlants from "./pages/Allplants";
+import { UserProfile } from "./pages/UserProfile";
 
 function App() {
   return (
@@ -27,9 +28,19 @@ function App() {
             path="/profile"
             element={<ProtectedRoute component={Profile} />}
           />
-          <Route path="/mygarden/:idGarden" element={<MyGarden />} /> // pagina de detalhe do garden
-          <Route path="/gardener" element={<Gardener />} /> // all users + searchbar
-          <Route path="/gardener/:idUser" element={<UserProfilec />} /> // pagina de um user
+
+          ${
+          //pagina de detalhe do garden
+          }
+          <Route path="/mygarden/:idGarden" element={<MyGarden />} />
+          ${
+          //all users + searchbar
+          }
+          <Route path="/gardener" element={<Gardener />} />
+          ${
+          //pagina de um user
+          }
+          <Route path="/gardener/:idUser" element={<UserProfile />} />
           <Route path="/allplants" element={<AllPlants />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />git
