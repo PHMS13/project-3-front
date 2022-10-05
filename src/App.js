@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import { Home }  from "./pages/Home";
+import Home from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import AboutUs from "./pages/AboutUs";
-import  ErrorPage  from "./pages/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 import NavBar from "./components/NavBar";
+import UserProfile from "./pages/UserProfile";
 
 import "./App.css";
 import MyGarden from "./pages/MyGarden";
@@ -18,7 +19,7 @@ import { UserProfile } from "./pages/UserProfile";
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar />
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,22 +29,17 @@ function App() {
             path="/profile"
             element={<ProtectedRoute component={Profile} />}
           />
+          <Route path="/mygarden/:idGarden" element={<MyGarden />} />{" "}
+          {/*  pagina de detalhe do garden */}
+          <Route path="/gardener" element={<Gardener />} />{" "}
+          {/* all users + searchbar */}
+          <Route path="/gardener/:idUser" element={<UserProfile />} />{" "}
+          {/* pagina de um user */}
 
-          ${
-          //pagina de detalhe do garden
-          }
-          <Route path="/mygarden/:idGarden" element={<MyGarden />} />
-          ${
-          //all users + searchbar
-          }
-          <Route path="/gardener" element={<Gardener />} />
-          ${
-          //pagina de um user
-          }
-          <Route path="/gardener/:idUser" element={<UserProfile />} />
           <Route path="/allplants" element={<AllPlants />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="*" element={<ErrorPage />} />git
+          <Route path="*" element={<ErrorPage />} />
+          git
         </Routes>
       </AuthContextComponent>
     </div>
