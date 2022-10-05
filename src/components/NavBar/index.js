@@ -37,7 +37,7 @@ function NavBar() {
       <Link to="/about">
         <Dropdown.Item href="#/action-2">Sobre nós</Dropdown.Item>
       </Link>
-      <Link to="/profiles">
+      <Link to="/">
         <Dropdown.Item href="#/action-3">Perfis</Dropdown.Item>
       </Link>
       <Link to="/allplants">
@@ -45,6 +45,9 @@ function NavBar() {
       </Link>
       <Link to="/about">
         <Dropdown.Item href="#/action-5">Sobre nós</Dropdown.Item>
+      </Link>
+      <Link to="/profile">
+        <Dropdown.Item href="#/action-5">Meu perfil</Dropdown.Item>
       </Link>
       
       </Dropdown.Menu>
