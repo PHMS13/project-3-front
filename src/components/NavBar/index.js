@@ -34,11 +34,11 @@ function NavBar() {
       <Link to="/">
         <Dropdown.Item href="#/action-1">Início</Dropdown.Item>
       </Link>
-      <Link to="/about">
-        <Dropdown.Item href="#/action-2">Sobre nós</Dropdown.Item>
+      <Link to="/profile">
+        <Dropdown.Item href="#/action-2">Meu perfil</Dropdown.Item>
       </Link>
-      <Link to="/profiles">
-        <Dropdown.Item href="#/action-3">Perfis</Dropdown.Item>
+      <Link to="/gardener">
+        <Dropdown.Item href="#/action-3">Outros jardineiros</Dropdown.Item>
       </Link>
       <Link to="/allplants">
         <Dropdown.Item href="#/action-4">Todas as plantas</Dropdown.Item>
