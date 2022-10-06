@@ -42,7 +42,7 @@
 }
 
 .homePageHero {
-  width: 90vw;
+  width: 100vw;
   min-height: 100vh;
   background-color: #EDDDD6;
   text-align: left;
@@ -50,17 +50,25 @@
 }
 
 .homeBackground {
-  background-image: url("./assets/MobileShort.png");
+  background-image: url("./assets/ImagemCentro+Fundo.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
-  max-width: 800px;
+  display: flex;
 }
 
 .homeBody {
   width: 104vw;
   height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.homeInicio {
+.homeInicio1 {
   background-color: #7c6053;
   color: whitesmoke;
   padding: 9px;
@@ -72,30 +80,53 @@
   font-family: "Lato", sans-serif;
   font-weight: 600;
   width: 30vw;
+  max-width: 160px;
+  margin: 30px;
+  margin-bottom: 14px;
+  margin-top: 100px;
 }
 
-.homeTxtInicio {
-  width: 630px;
+.homeInicio2 {
+  background-color: #7c6053;
+  color: whitesmoke;
+  padding: 9px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  border-color: #7c6053;
   font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  width: 30vw;
+  max-width: 160px;
+  min-width: 30px;
   margin: 30px;
-  margin-top: 40vh;
+  margin-top: 0px;
+}
+
+
+.homeTxtInicio {
+  width: 47vw;
+  font-size: 18px;
+  margin: 30px;
+  margin-top: 100px;
   text-align: justify;
   font-family: "Lato", sans-serif;
   color: whitesmoke;
   font-weight: 600;
 }
 
-.homeBody {
-  width: 80vw;
-  margin-top: 0vh;
-}
 
 #btnCadastrar {
   margin-top: 13px;
 }
 
-form {
-  margin-top: 180px;
+#inscreverForm {
+  margin-top: 250px;
+}
+
+#inscreverInfo {
+  margin-top: 20px
 }
 
 #form {
@@ -365,4 +396,56 @@ Form {
   margin: 25px;
   margin-bottom: 14px;
   margin-top: 40px;
+}
+
+@media (min-width: 521px) {
+
+  .homeInicio1 {
+    background-color: #7c6053;
+    color: whitesmoke;
+    padding: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 12px;
+    border-color: #7c6053;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    width: 30vw;
+    max-width: 160px;
+    margin: 30px;
+    margin-bottom: 14px;
+    margin-top: 0px;
+  }
+  
+  .homeInicio2 {
+    background-color: #7c6053;
+    color: whitesmoke;
+    padding: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 12px;
+    border-color: #7c6053;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    width: 30vw;
+    max-width: 160px;
+    min-width: 30px;
+    margin: 30px;
+    margin-top: 0px;
+  }
+  
+  
+  .homeTxtInicio {
+    width: 47vw;
+    font-size: 18px;
+    margin: 30px;
+    margin-top: 100px;
+    text-align: justify;
+    font-family: "Lato", sans-serif;
+    color: whitesmoke;
+    font-weight: 600;
+  }
+
 }

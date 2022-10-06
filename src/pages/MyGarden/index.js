@@ -6,11 +6,14 @@ botao de edit jardim => formulario de edicao + excluir jardim
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
+import { Button } from "react-bootstrap";
 
 function MyGarden() {
   const [oneGarden, setOneGarden] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [reload, setReload] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+
 
   const { idGarden } = useParams();
   const navigate = useNavigate();
@@ -70,8 +73,6 @@ function MyGarden() {
     }
   }
 
-  console.log(oneGarden);
-  console.log(form);
   return (
     <div>
       <h1>Local: {oneGarden.local} </h1>
@@ -81,8 +82,22 @@ function MyGarden() {
         {!isLoading &&
           oneGarden.plants.map((plant) => {
             return (
-              <div> CARDS DAS PLANTAS
+              <div>
+                {" "}
+                CARDS DAS PLANTAS
                 <h1>{plant.popularName}</h1>
+                
+                <Button
+                  onClick={() => setShowForm(!showForm)}
+                  className="btn btn-light btn-outline-dark btn-sm me-2"
+                  style={{
+                    backgroundColor: "#7C6053",
+                    color: "white",
+                    borderColor: "#7C6053",
+                  }}
+                >
+                  Editar Planta
+                </Button>
               </div>
             );
           })}
