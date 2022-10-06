@@ -73,7 +73,7 @@ function AllPlants({ user, id }) {
                 marginBottom: "30px",
               }}
             >
-              <h1 className="SubAll">Todas as Plantas</h1>
+              <h1 className="SubAll">Conheça nossas sujestões de plantas para o seu Jardim! </h1>
               <img src={imgAllPlants} alt="planta" className="imgAllPlants" />
             </div>
 
@@ -90,7 +90,7 @@ function AllPlants({ user, id }) {
                 style={{ width: "90vw", height: "46px", borderRadius: "12px" }}
                 value={search}
                 onChange={handleSearch}
-                placeholder="Encontre a sua planta"
+                placeholder="Encontre a planta perfeita para o seu ambiente"
               />
             </Col>
           </div>

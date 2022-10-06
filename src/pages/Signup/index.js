@@ -130,21 +130,12 @@ function Signup() {
       />
       {img && <img style={{maxHeight:"260px"}}  src={preview} alt=""/>}
 
-      <label htmlFor="formAge">Idade:</label>
+      <label htmlFor="formAge">(opcional)Idade:</label>
       <input
         id="inscreverInfo"
         name="age"
         type="text"
         value={form.age}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="formRegion">Região:</label>
-      <input
-        id="inscreverInfo"
-        name="region"
-        type="text"
-        value={form.region}
         onChange={handleChange}
       />
 
@@ -166,44 +157,30 @@ function Signup() {
         onChange={handleChange}
       />
 
-      <label id="label" htmlFor="formLivingSpace">Cômodo:</label>
-      <select
-        required
-        id="formSelect"
-        name="livingSpace"
-        onChange={handleChange}
-        defaultValue={form.livingSpace}
-      >
-        <option value=""></option>
-        <option value="Sala">Sala</option>
-        <option value="Banheiro">Banheiro</option>
-        <option value="Cozinha">Cozinha</option>
-        <option value="Jardim">Jardim</option>
-        <option value="Varanda">Varanda</option>
-        <option value="Lavanderia">Lavanderia</option>
-        <option value="Quarto">Quarto</option>
-        <option value="Outros">Outros</option>
-      </select>
-
-      <label id="label" htmlFor="formResidence">Residência:</label>
+      <label id="label" htmlFor="formResidence">
+        Residência:
+      </label>
       <select
         required
         id="formSelect"
         name="residence"
         onChange={handleChange}
-        defaultValue={form.residence}
-      >
+        defaultValue={form.residence}>
         <option value=""></option>
         <option value="Apartamento">Apartamento</option>
         <option value="Casa">Casa</option>
         <option value="Sítio">Sítio</option>
+        <option value="Studio">Studio</option>
         <option value="Escritório">Escritório</option>
+        <option value="Outro">Outro</option>
       </select>
 
-      <button id="btnCadastrar" type="submit">Cadastrar</button>
+      <button id="btnCadastrar" type="submit">
+        Cadastrar
+      </button>
     </form>
     </div>
   );
 }
 
-export default Signup
+export default Signup;
