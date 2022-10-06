@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 import { api } from "../../api/api";
@@ -11,7 +10,6 @@ import MyGarden from "../../components/MyGarden";
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
 import AllPlants from "../Allplants";
-
 
 import { Button, Accordion } from "react-bootstrap";
 
@@ -39,7 +37,6 @@ function Profile() {
 
   console.log(formGarden);
 
-
   //states das perguntas
   const [luminosidade, setLuminosidade] = useState(0);
   const [cuidado, setCuidado] = useState(0);
@@ -58,7 +55,6 @@ function Profile() {
     async function fetchUser() {
       setIsLoading(true);
       try {
-      
         const response = await api.get("/users/profile");
         setUser(response.data);
 
@@ -81,7 +77,6 @@ function Profile() {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
     navigate("/");
-
   }
   console.log(user);
 
@@ -117,10 +112,9 @@ function Profile() {
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
-          <strong>Moradia:</strong> {user.residence} |
+          <strong>Espaço:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
-
 
         <Button
           onClick={() => setShowForm(!showForm)}
@@ -133,7 +127,7 @@ function Profile() {
         >
           Editar Perfil
         </Button>
-        <button onClick={handleLogOut}>Logout</button>
+        <button onClick={handleLogOut}>Sair</button>
       </div>
 
       {showForm === true && (
@@ -170,9 +164,11 @@ function Profile() {
             </>
           )}
         </Accordion>
-        <div>
+        <div style={{display: "flex", flexDirection: "column",
+    alignItems: "stretch",
+    flexWrap: "nowrap"}}>
           <div>
-            <p>DIV DO FORM DE CRIAÇÃO DO GARDEN</p>
+            <h2>Crie um Jardim</h2>
             <form onSubmit={handleSubmitGarden}>
               <label>Nome do jardim</label>
               <input
@@ -187,7 +183,7 @@ function Profile() {
                 value={formGarden.local}
                 onChange={handleChange}
               />
-              <button type="submit">salvar jardim</button>
+              <button type="submit">Salvar Jardim</button>
             </form>
           </div>
 

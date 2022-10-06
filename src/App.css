@@ -95,12 +95,12 @@
 }
 
 form {
-  margin-top: 180px;
+  /*margin-top: 180px;*/
 }
 
 #form {
-  width: 180px;
-  margin-top: 15px;
+  /*width: 180px;
+  margin-top: 15px;*/
 }
 
 #formImg {
@@ -204,9 +204,9 @@ form {
 }
 
 Form {
-  width: 90vw;
-  height: 380px;
-  display: flex;
+  /*width: 90vw;*/
+  /*height: 380px;*/
+  /*display: flex;*/
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -365,4 +365,8 @@ Form {
   margin: 25px;
   margin-bottom: 14px;
   margin-top: 40px;
+}
+
+.creategarden {
+  display: flex;
 }
