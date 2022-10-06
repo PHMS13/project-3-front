@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
-import { api } from "../../api/api";
 
 function EditUser({
   form,
@@ -20,7 +19,10 @@ function EditUser({
     try {
       delete form._id;
 
-      await api.put("/users/edit", form );
+      await axios.put(
+        `https://ironrest.herokuapp.com/jungle-wd-85-profile/${id}`,
+        form
+      );
 
       setShowForm(false);
       setReload(!reload);
@@ -35,7 +37,7 @@ function EditUser({
 
   async function handleDelete() {
     try {
-      await api.delete(
+      await axios.delete(
         `https://ironrest.herokuapp.com/jungle-wd-85-profile/${id}`
       );
 
@@ -45,44 +47,36 @@ function EditUser({
     }
   }
 
+
   return (
     <Modal show={showForm} onHide={() => setShowForm(false)}>
       <Modal.Header closeButton>
-      <Modal.Title>Edite seu Perfil</Modal.Title>
+        <Modal.Title>Edite seu Perfil</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          <Form.Label>
-            <strong>Nome</strong>
-          </Form.Label>
-          <Form.Control
-            name="username"
-            value={form.username}
-            onChange={handleChange}
-            style={{
-              marginBottom: "20px",
-            }}
-          />
-          <Form.Label>
-            <strong>Idade</strong>
-          </Form.Label>
+        <Form style={{height:"230px"}}>
+          <Form.Label><strong>Nome</strong></Form.Label>
+          <Form.Control name="username" value={form.username} onChange={handleChange} 
+          style={{
+            marginBottom:"20px"}}/>
+
+          <Form.Label><strong>Idade</strong></Form.Label>
           <Form.Control
             name="age"
             value={form.age}
             onChange={handleChange}
-            style={{ marginBottom: "20px" }}
+            style={{marginBottom:"20px"}}
           />
 
-          <Form.Label>
-            <strong>Ambiente</strong>
-          </Form.Label>
-          <Form.Select
-            style={{ marginBottom: "20px" }}
+          {/*   <Form.Label>Signo</Form.Label>
+          <Form.Control name="moradia" value={form.moradia} onChange={handleChange} /> */}
+
+          <Form.Label><strong>Ambiente</strong></Form.Label>
+          <Form.Select style={{marginBottom:"20px"}}
             required
             name="residence"
             onChange={handleChange}
-            defaultValue={form.residence}
-          >
+            defaultValue={form.residence}>
             <option value=""></option>
             <option value="Apartamento">Apartamento</option>
             <option value="Casa">Casa</option>
@@ -98,16 +92,16 @@ function EditUser({
           variant="danger"
           className="text-light fw-semibold"
           onClick={handleDelete}
-          size="sm"
-        >
+          size="sm">
           Delete esse perfil
         </Button>
         <Button
           variant="success"
           onClick={handleSubmit}
           className="text-light fw-semibold"
-          size="sm"
-        >    Salvar
+          size="sm">
+          {" "}
+          Salvar{" "}
         </Button>
       </Modal.Footer>
     </Modal>

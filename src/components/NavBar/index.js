@@ -7,7 +7,13 @@ function NavBar() {
 
   return (
     <div>
-      <nav className="navbar shadow-md rounded-bottom">
+      <nav className="navbar shadow-md rounded-bottom" style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "nowrap",
+          flexDirection: "column"
+      }}>
 
       <div
         style={{
@@ -22,8 +28,8 @@ function NavBar() {
           marginRight: "25px",
         }}
       >
-      <Link to="/" style={{marginLeft:"0px", width:"48%"}}>
-        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"300px", minWidth:"160px", marginTop:"0px" }}/>
+      <Link to="/" style={{}}>
+        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"300px", minWidth: "50px", marginTop:"0px" }}/>
       </Link>
 
         <Dropdown>
@@ -33,31 +39,26 @@ function NavBar() {
 
       <Dropdown.Menu className="dropdown">
       <Link to="/">
-        <Dropdown.Item href="#/action-1">Início</Dropdown.Item>
+        <Dropdown.Item href="#/action-1" className="AllSub" >Início</Dropdown.Item>
       </Link>
 
       <Link to="/profile">
-        <Dropdown.Item href="#/action-2">Meu perfil</Dropdown.Item>
+        <Dropdown.Item href="#/action-2" className="AllSub" >Meu perfil</Dropdown.Item>
       </Link>
       <Link to="/gardener">
-        <Dropdown.Item href="#/action-4">Outros jardineiros</Dropdown.Item>
+        <Dropdown.Item href="#/action-4" className="AllSub" >Outros jardineiros</Dropdown.Item>
       </Link>
       <Link to="/allplants">
-        <Dropdown.Item href="#/action-5">Todas as plantas</Dropdown.Item>
+        <Dropdown.Item href="#/action-5" className="AllSub" >Todas as plantas</Dropdown.Item>
       </Link>
       <Link to="/about">
-        <Dropdown.Item href="#/action-6">Sobre nós</Dropdown.Item>
+        <Dropdown.Item href="#/action-6" className="AllSub" >Sobre nós</Dropdown.Item>
       </Link>
-      {/* <Link to="/profile">
-        <Dropdown.Item href="#/action-5">Meu perfil</Dropdown.Item>
-      </Link> */}
-      
+     
       </Dropdown.Menu>
     </Dropdown>
     
       </div>
-
-      
       </nav>
     </div>
   );

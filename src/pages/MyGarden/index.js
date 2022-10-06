@@ -14,6 +14,8 @@ function MyGarden() {
   const [oneGarden, setOneGarden] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [reload, setReload] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+
 
   const { idGarden } = useParams();
   const navigate = useNavigate();
@@ -33,7 +35,6 @@ function MyGarden() {
     local: oneGarden.local,
   });
 
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     async function fetchmyGarden() {
@@ -218,7 +219,7 @@ function MyGarden() {
               }}
               onSubmit={handleSubmit}
             >
-              <h2>Adicione uma planta</h2>
+              <h2 className="AllSub">Adicione uma planta nova ao seu Jardim!</h2>
 
               <label>Nome popular:</label>
               <input

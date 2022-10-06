@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
 import MyGarden from "../../components/MyGarden";
+import Card from "react-bootstrap/Card";
 
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
@@ -95,7 +96,21 @@ function Profile() {
     }
   }
 
+  // async function handledeleteGarden(e) {
+
+  //   try {
+  //     const response = await api.delete(`/garden//delete/´${idGarden}`, formGarden);
+
+  //     setReload(!reload);
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   console.log(user);
+  console.log(isLoading);
+
   return (
     <div>
       <div
@@ -115,28 +130,31 @@ function Profile() {
           <strong>Ambiente:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
+      </div>
+      <Button
+        onClick={() => setShowForm(!showForm)}
+        className="btn btn-light btn-outline-dark btn-sm me-2"
+        style={{
+          backgroundColor: "#7C6053",
+          color: "white",
+          borderColor: "#7C6053",
+        }}
+      >
+        Editar Perfil
+      </Button>
 
-        <Button
-          onClick={() => setShowForm(!showForm)}
-          className="btn btn-light btn-outline-dark btn-sm me-2"
-          style={{
-            backgroundColor: "#7C6053",
-            color: "white",
-            borderColor: "#7C6053",
-          }}
-        >
-          Editar Perfil
-        </Button>
-
-        <Button
-          onClick={handleLogOut}
-          className="btn btn-light btn-outline-dark btn-sm me-2"
-          style={{
-            backgroundColor: "#7C6053",
-            color: "white",
-            borderColor: "#7C6053",
-          }}> Sair </Button>
-     </div>
+      <Button
+        onClick={handleLogOut}
+        className="btn btn-light btn-outline-dark btn-sm me-2"
+        style={{
+          backgroundColor: "#7C6053",
+          color: "white",
+          borderColor: "#7C6053",
+        }}
+      >
+        {" "}
+        Sair{" "}
+      </Button>
 
       {showForm === true && (
         <EditUser
@@ -155,7 +173,9 @@ function Profile() {
           {!isLoading && (
             <>
               <Accordion.Item eventKey="2">
-                <Accordion.Header>Quiz de Plantas</Accordion.Header>
+                <Accordion.Header className="AllSub">
+                  Quiz de Plantas
+                </Accordion.Header>
                 <Accordion.Body>
                   <Quiz
                     luminosidade={luminosidade}
@@ -172,105 +192,92 @@ function Profile() {
             </>
           )}
         </Accordion>
-        <div style={{display: "flex", flexDirection: "column",
-    alignItems: "stretch",
-    flexWrap: "nowrap"}}>
-          <div>
-            <h2 className="AllSub">Crie um Jardim</h2>
-            <form onSubmit={handleSubmitGarden}>
-              <label>Nome do jardim</label>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+          flexWrap: "nowrap",
+        }}
+      >
+        <div className="barraSupinpa" style={{ display: "flex" }}>
+          <h2 className="AllSub">Crie um Jardim</h2>
+          <form onSubmit={handleSubmitGarden}>
+            <div style={{ display: "flex", margin: " 10px" }}>
+              <label> Nome do jardim </label>
               <input
                 name="name"
                 value={formGarden.name}
                 onChange={handleChange}
               />
+            </div>
 
-              <label>Local do Jardim</label>
+            <div style={{ display: "flex", margin: " 10px" }}>
+              <label> Local do Jardim </label>
               <input
                 name="local"
                 value={formGarden.local}
                 onChange={handleChange}
               />
-               <Button
-             type="submit"
-          className="btn btn-light btn-outline-dark btn-sm me-2"
-          style={{
-            backgroundColor: "#7C6053",
-            color: "white",
-            borderColor: "#7C6053",
-          }}> Salvar Jardim </Button>
-             
-            </form>
-          </div>
+            </div>
+            <button>DELETAR JARDIM</button>
 
-          <h1 className="AllSub">Meus Jardins</h1>
-          {!isLoading &&
-            user.garden.map((garden) => {
-              const date = new Date(garden.createdAt);
-
-              const dd = date.getDate();
-              const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
-              const aa = date.getFullYear();
-
-              const hh = date.getHours();
-              const min = date.getMinutes();
-              console.log(garden);
-              return (
-                <div>
-                  <p>
-                    nome: {garden.name} - local: {garden.local}- postado em:{" "}
-                    {dd}/{mm}/{aa} - {hh}:{min}{" "}
-                  </p>
-                  <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
-                  {garden.comments.length > 0 && <h2>Comentários:</h2>}
-                  {garden.comments.map((comments) => {
-                    return comments;
-                  })}
-                </div>
-              );
-            })}
+            <Button
+              type="submit"
+              className="btn btn-light btn-outline-dark btn-sm me-2"
+              style={{
+                backgroundColor: "#7C6053",
+                color: "white",
+                borderColor: "#7C6053",
+              }}
+            >
+              {" "}
+              Salvar Jardim{" "}
+            </Button>
+          </form>
         </div>
+
+        <div></div>
       </div>
+      <h1 className="AllSub">Meus Jardins</h1>
+      {!isLoading &&
+        user.garden.map((garden) => {
+          const date = new Date(garden.createdAt);
+
+          const dd = date.getDate();
+          const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
+          const aa = date.getFullYear();
+
+          const hh = date.getHours();
+          const min = date.getMinutes();
+          console.log(garden);
+
+          return (
+            <Card style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>nome: {garden.name} </Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  local: {garden.local}
+                </Card.Subtitle>
+                <Card.Text>
+                  <p>
+                    postado em: {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                  </p>
+                </Card.Text>
+                <Card.Link>
+                  <Link to={`/mygarden/${garden._id}`}>Explore seu Jardim</Link>
+                </Card.Link>
+                {garden.comments.length > 0 && <h2>Comentários:</h2>}
+                {garden.comments.map((comments) => {
+                  return <p>{comments.content}</p>;
+                })}
+              </Card.Body>
+            </Card>
+          );
+        })}
     </div>
   );
 }
 
 export default Profile;
-
-//info user -> /users/profile+edit+delete
-/* Criar jardim -> /gardens/create
-meus jardins (card)
-quiz
-*/
-
-/* <Accordion.Item eventKey="0">
-<Accordion.Header onClick={handleAccordion}>
-  Meu Jardim
-</Accordion.Header>
-<Accordion.Body>
-  <MyGarden
-    user={user}
-    id={user._id}
-    showForm={showForm}
-    setShowForm={setShowForm}
-    reload={reload}
-    setReload={setReload}
-    isLoading={isLoading}
-  />
-</Accordion.Body>
-</Accordion.Item> 
-
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Todas as Plantas</Accordion.Header>
-                <Accordion.Body>
-                  <AllPlants
-                    id={user._id}
-                    user={user}
-                    reload={reload}
-                    setReload={setReload}
-                    showForm={showForm}
-                    setShowForm={setShowForm}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
-            */
