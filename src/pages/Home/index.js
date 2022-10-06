@@ -15,7 +15,7 @@ function Home() {
           </p>
           <div style={{display: "flex", alignItems: "center", flexDirection: "column", flexWrap: "nowrap"}}>{/*  nessa div, flex flex direction coll */}
             <Link to="/signup">
-              <button className="homeInicio1">Se cadastre</button>
+              <button className="homeInicio1">Cadastre-se</button>
             </Link>
             <Link to="/login">
               <button className="homeInicio2">Acesse sua conta</button>

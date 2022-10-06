@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import formHead from "../../assets/03 - QuizPlantas.png"
 
 function Signup() {
   const navigate = useNavigate();
@@ -75,6 +76,14 @@ function Signup() {
   }
 
   return (
+    <div style={{backgroundColor: "#EDDDD6"}}>
+    <div style={{display:"flex", flexDirection:"row", flexWrap:"nowrap", alignContent:"center", alignItems:"center",
+    justifyContent:"center",
+    marginBottom:"30px"}}>
+    <h1 className="formTitle" >Inscreva-se</h1>
+    <img src={formHead} className="formHead" alt="form" />
+    </div>
+
     <form id="inscreverForm" onSubmit={handleSubmit}>
       <label htmlFor="formName">Nome:</label>
       <input
@@ -119,7 +128,7 @@ function Signup() {
         type="file"
         onChange={handleImage}
       />
-      {img && <img src={preview} alt="" />}
+      {img && <img style={{maxHeight:"260px"}}  src={preview} alt=""/>}
 
       <label htmlFor="formAge">(opcional)Idade:</label>
       <input
@@ -170,6 +179,7 @@ function Signup() {
         Cadastrar
       </button>
     </form>
+    </div>
   );
 }
 
