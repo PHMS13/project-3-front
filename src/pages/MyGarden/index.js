@@ -70,24 +70,32 @@ function MyGarden() {
     }
   }
 
+  async function handleDeletePlant(idPlant) {
+    await api.delete(`/plant/delete/${idPlant}`);
+    setReload(!reload);
+  }
+
   console.log(oneGarden);
   console.log(form);
   return (
     <div>
       <h1>Local: {oneGarden.local} </h1>
       <h2>nome do jardim: {oneGarden.name}</h2>
-
       <div>
         {!isLoading &&
           oneGarden.plants.map((plant) => {
             return (
-              <div> CARDS DAS PLANTAS
+              <div>
+                {" "}
+                CARDS DAS PLANTAS
                 <h1>{plant.popularName}</h1>
+                <p>{plant.scientificName}</p>
+                <p>{plant.origin}</p>
+                <button onClick={() => handleDeletePlant(plant._id)}>Deletar Planta</button>
               </div>
             );
           })}
       </div>
-
       <div>
         <h1>adicione uma planta</h1>
         <p>pra qual rota: /plant/create</p>
@@ -100,34 +108,33 @@ function MyGarden() {
             onChange={handleChange}
           />
 
-          <label>scientificName</label>
+          <label>Nome Científico</label>
           <input
             name="scientificName"
             value={form.scientificName}
             onChange={handleChange}
           />
 
-          <label>origin</label>
+          <label>Origem</label>
           <input name="origin" value={form.origin} onChange={handleChange} />
 
-          <label>care</label>
-          <input name="care" value={form.care} onChange={handleChange} />
+          <label>Nível de Cuidado</label>
+          <input  type="number" min={1} max={5} name="care" value={form.care} onChange={handleChange} />
 
-          <label>luminosity</label>
+          <label>Nível de Luminosidade</label>
           <input
+            type="number" min={1} max={5}
             name="luminosity"
             value={form.luminosity}
             onChange={handleChange}
           />
 
-          <label>info</label>
+          <label>Informações</label>
           <input name="info" value={form.info} onChange={handleChange} />
           <button type="submit">Adicionar uma planta</button>
         </form>
       </div>
-
-        --! essa parte ainda falta 
-
+      --! essa parte ainda falta
       <button>Editar Jardim</button>
       <p>form de edicao de jardim</p>
       <p>pra qual rota: /garden/edit/idGarden</p>
