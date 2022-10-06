@@ -24,13 +24,21 @@ function MyGarden() {
     info: "",
   });
 
+  const [formGarden, setFormGarden] = useState({
+    name: oneGarden.name,
+    local: oneGarden.local,
+  });
+
   useEffect(() => {
     async function fetchmyGarden() {
       try {
         setIsLoading(true);
         const response = await api.get(`/garden/one-garden/${idGarden}`);
         setOneGarden(response.data);
-
+        setFormGarden({
+          name: response.data.name,
+          local: response.data.local,
+        });
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -75,6 +83,21 @@ function MyGarden() {
     setReload(!reload);
   }
 
+  async function handleEdit(e) {
+    setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmitGarden(e) {
+    e.preventDefault();
+
+    try {
+      await api.put(`/garden/edit/${idGarden}`, formGarden);
+      setReload(!reload);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   console.log(oneGarden);
   console.log(form);
   return (
@@ -82,23 +105,24 @@ function MyGarden() {
       <h1>Local: {oneGarden.local} </h1>
       <h2>nome do jardim: {oneGarden.name}</h2>
       <div>
+        Card PLANTAS
         {!isLoading &&
           oneGarden.plants.map((plant) => {
             return (
               <div>
                 {" "}
-                CARDS DAS PLANTAS
                 <h1>{plant.popularName}</h1>
                 <p>{plant.scientificName}</p>
                 <p>{plant.origin}</p>
-                <button onClick={() => handleDeletePlant(plant._id)}>Deletar Planta</button>
+                <button onClick={() => handleDeletePlant(plant._id)}>
+                  Deletar Planta
+                </button>
               </div>
             );
           })}
       </div>
       <div>
-        <h1>adicione uma planta</h1>
-        <p>pra qual rota: /plant/create</p>
+        <h1>Adicione uma planta</h1>
 
         <form onSubmit={handleSubmit}>
           <label>Nome popular</label>
@@ -119,11 +143,20 @@ function MyGarden() {
           <input name="origin" value={form.origin} onChange={handleChange} />
 
           <label>Nível de Cuidado</label>
-          <input  type="number" min={1} max={5} name="care" value={form.care} onChange={handleChange} />
+          <input
+            type="number"
+            min={1}
+            max={5}
+            name="care"
+            value={form.care}
+            onChange={handleChange}
+          />
 
           <label>Nível de Luminosidade</label>
           <input
-            type="number" min={1} max={5}
+            type="number"
+            min={1}
+            max={5}
             name="luminosity"
             value={form.luminosity}
             onChange={handleChange}
@@ -134,9 +167,23 @@ function MyGarden() {
           <button type="submit">Adicionar uma planta</button>
         </form>
       </div>
-      --! essa parte ainda falta
-      <button>Editar Jardim</button>
-      <p>form de edicao de jardim</p>
+
+      <form onSubmit={handleSubmitGarden}>
+        <label>Nome do Jardim:</label>
+        <input
+          name="name"
+          value={formGarden.name}
+          onChange={handleEdit}
+        />
+        <label>Local do Jardim:</label>
+        <input
+          name="local"
+          value={formGarden.local}
+          onChange={handleEdit}
+        />
+        <button type="submit">Editar Jardim</button>
+      </form>
+
       <p>pra qual rota: /garden/edit/idGarden</p>
     </div>
   );
