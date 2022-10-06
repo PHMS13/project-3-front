@@ -75,10 +75,10 @@ function Signup() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="inscreverForm" onSubmit={handleSubmit}>
       <label htmlFor="formName">Nome:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="username"
         type="text"
         value={form.username}
@@ -87,7 +87,7 @@ function Signup() {
 
       <label htmlFor="formEmail">E-mail:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="email"
         type="email"
         value={form.email}
@@ -96,7 +96,7 @@ function Signup() {
 
       <label htmlFor="formPassword">Senha:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="password"
         type="password"
         value={form.password}
@@ -105,7 +105,7 @@ function Signup() {
 
       <label htmlFor="formConfirmPassword">Confirmação de senha:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         type="password"
         name="confirmPassword"
         value={form.confirmPassword}
@@ -123,7 +123,7 @@ function Signup() {
 
       <label htmlFor="formAge">Idade:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="age"
         type="text"
         value={form.age}
@@ -132,7 +132,7 @@ function Signup() {
 
       <label htmlFor="formRegion">Região:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="region"
         type="text"
         value={form.region}
@@ -141,7 +141,7 @@ function Signup() {
 
       <label htmlFor="formCountry">País:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="country"
         type="text"
         value={form.country}
@@ -150,7 +150,7 @@ function Signup() {
 
       <label htmlFor="formCity">Cidade:</label>
       <input
-        id="form"
+        id="inscreverInfo"
         name="city"
         type="text"
         value={form.city}

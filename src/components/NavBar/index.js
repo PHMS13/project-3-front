@@ -7,7 +7,13 @@ function NavBar() {
 
   return (
     <div>
-      <nav className="navbar shadow-md rounded-bottom">
+      <nav className="navbar shadow-md rounded-bottom" style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "nowrap",
+          flexDirection: "column"
+      }}>
 
       <div
         style={{
@@ -22,8 +28,8 @@ function NavBar() {
           marginRight: "25px",
         }}
       >
-      <Link to="/" style={{marginLeft:"0px", width:"48%"}}>
-        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"300px", minWidth:"160px", marginTop:"0px" }}/>
+      <Link to="/" style={{}}>
+        <img src={logo} alt="logo" style={{ width: "100%", maxWidth:"300px", minWidth: "50px", marginTop:"0px" }}/>
       </Link>
 
         <Dropdown>

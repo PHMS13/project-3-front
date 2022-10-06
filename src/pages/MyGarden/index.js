@@ -14,6 +14,8 @@ function MyGarden() {
   const [oneGarden, setOneGarden] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [reload, setReload] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+
 
   const { idGarden } = useParams();
   const navigate = useNavigate();
@@ -32,8 +34,6 @@ function MyGarden() {
     name: oneGarden.name,
     local: oneGarden.local,
   });
-
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     async function fetchmyGarden() {
@@ -165,7 +165,7 @@ function MyGarden() {
                       </Card.Body>
                     </Card>
                 
-                {oneGarden.author == loggedInUser.user._id && (
+                {oneGarden.author === loggedInUser.user._id && (
                   <button onClick={() => handleDeletePlant(plant._id)}>
                     Deletar Planta
                   </button>
@@ -178,7 +178,7 @@ function MyGarden() {
       {/* mostrar os forms de editar jardim e adicionar plantas so pra quem é o dono do garden */}
 
 
-      {oneGarden.author == loggedInUser.user._id && (
+      {oneGarden.author === loggedInUser.user._id && (
         <>
           <div style={{ display: "flex", width: "90vw",
     height: "380px", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
