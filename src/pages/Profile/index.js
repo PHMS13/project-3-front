@@ -104,15 +104,14 @@ function Profile() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-        }}
-      >
+        }}>
         <h1 className="AllSub">Perfil</h1>
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
-          <strong>Espaço:</strong> {user.residence} |
+          <strong>Residência:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
 
@@ -123,8 +122,7 @@ function Profile() {
             backgroundColor: "#7C6053",
             color: "white",
             borderColor: "#7C6053",
-          }}
-        >
+          }}>
           Editar Perfil
         </Button>
         <button onClick={handleLogOut}>Sair</button>
@@ -164,9 +162,13 @@ function Profile() {
             </>
           )}
         </Accordion>
-        <div style={{display: "flex", flexDirection: "column",
-    alignItems: "stretch",
-    flexWrap: "nowrap"}}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "stretch",
+            flexWrap: "nowrap",
+          }}>
           <div>
             <h2>Crie um Jardim</h2>
             <form onSubmit={handleSubmitGarden}>
@@ -177,12 +179,32 @@ function Profile() {
                 onChange={handleChange}
               />
 
-              <label>Local do Jardim</label>
+              <label>Descrição do Jardim</label>
               <input
                 name="local"
                 value={formGarden.local}
                 onChange={handleChange}
               />
+
+              <label id="label" htmlFor="formResidence">
+                Local:
+              </label>
+              <select
+                required
+                id="formSelect"
+                name="livingSpace"
+                onChange={handleChange}
+                defaultValue={form.residence}>
+                <option value=""></option>
+                <option value="Quintal">Quintal</option>
+                <option value="Varanda">Varanda</option>
+                <option value="Sala">Sala</option>
+                <option value="Quarto">Quarto</option>
+                <option value="Cozinha">Cozinha</option>
+                <option value="Banheiro">Banheiro</option>
+                <option value="Lavanderia">Lavanderia</option>
+                <option value="Outro">Outro</option>
+              </select>
               <button type="submit">Salvar Jardim</button>
             </form>
           </div>
