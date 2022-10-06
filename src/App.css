@@ -121,17 +121,22 @@
   margin-top: 13px;
 }
 
+<<<<<<< HEAD
 #inscreverForm {
   margin-top: 250px;
 }
 
 #inscreverInfo {
   margin-top: 20px
+=======
+form {
+  /*margin-top: 180px;*/
+>>>>>>> 88260bb99ce3df782d18df1de5557304d39d27b8
 }
 
 #form {
-  width: 180px;
-  margin-top: 15px;
+  /*width: 180px;
+  margin-top: 15px;*/
 }
 
 #formImg {
@@ -235,9 +240,9 @@
 }
 
 Form {
-  width: 90vw;
-  height: 380px;
-  display: flex;
+  /*width: 90vw;*/
+  /*height: 380px;*/
+  /*display: flex;*/
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -448,4 +453,7 @@ Form {
     font-weight: 600;
   }
 
+}
+.creategarden {
+  display: flex;
 }

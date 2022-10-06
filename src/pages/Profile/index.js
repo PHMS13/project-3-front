@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
+
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
 import MyGarden from "../../components/MyGarden";
+
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
+import AllPlants from "../Allplants";
 
 import { Button, Accordion } from "react-bootstrap";
 
 function Profile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
+
   const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,6 +48,7 @@ function Profile() {
     country: "",
     city: "",
     residence: "",
+    garden: [],
   });
 
   useEffect(() => {
@@ -73,6 +78,7 @@ function Profile() {
     localStorage.removeItem("loggedInUser");
     navigate("/");
   }
+  console.log(user);
 
   async function handleSubmitGarden(e) {
     e.preventDefault();
@@ -106,7 +112,7 @@ function Profile() {
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
-          <strong>Moradia:</strong> {user.residence} |
+          <strong>Espaço:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
 
@@ -121,7 +127,7 @@ function Profile() {
         >
           Editar Perfil
         </Button>
-        <button onClick={handleLogOut}>Logout</button>
+        <button onClick={handleLogOut}>Sair</button>
       </div>
 
       {showForm === true && (
@@ -158,10 +164,11 @@ function Profile() {
             </>
           )}
         </Accordion>
-
-        <div>
+        <div style={{display: "flex", flexDirection: "column",
+    alignItems: "stretch",
+    flexWrap: "nowrap"}}>
           <div>
-            <p>DIV DO FORM DE CRIAÇÃO DO GARDEN</p>
+            <h2>Crie um Jardim</h2>
             <form onSubmit={handleSubmitGarden}>
               <label>Nome do jardim</label>
               <input
@@ -176,7 +183,7 @@ function Profile() {
                 value={formGarden.local}
                 onChange={handleChange}
               />
-              <button type="submit">salvar jardim</button>
+              <button type="submit">Salvar Jardim</button>
             </form>
           </div>
 

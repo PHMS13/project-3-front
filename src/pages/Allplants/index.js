@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/api";
 import { Form, Col } from "react-bootstrap";
 import imgAllPlants from "../../assets/06 - Plantas.png";
 
@@ -18,7 +18,7 @@ function AllPlants({ user, id }) {
     clone.garden.push(plant); //planta adicionada na array de garden
     delete clone._id;
 
-    await axios.put(
+    await api.put(
       `https://ironrest.herokuapp.com/jungle-wd-85-profile/${id}`,
       clone
     );
@@ -31,7 +31,7 @@ function AllPlants({ user, id }) {
     async function fetchPlants() {
       setIsLoading(true);
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `https://ironrest.herokuapp.com/jungle-wd-85`
         );
 
