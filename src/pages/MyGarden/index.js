@@ -2,7 +2,7 @@
 botao de add plant/ botao de remover planta
 botao de edit jardim => formulario de edicao + excluir jardim
 */
-
+import { Button } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
@@ -34,6 +34,7 @@ function MyGarden() {
     name: oneGarden.name,
     local: oneGarden.local,
   });
+
 
   useEffect(() => {
     async function fetchmyGarden() {
@@ -113,62 +114,89 @@ function MyGarden() {
   console.log(form);
   return (
     <div>
-      <h2>Nome do Jardim: {oneGarden.name}</h2>
-      <h3>Local: {oneGarden.local} </h3>
+      <h2 className="AllSub" >Nome do Jardim:</h2> <h4>{oneGarden.name}</h4>
+      <h3 className="AllSub" >Local: </h3> <h4>{oneGarden.local}</h4>
       {showForm && (
         <form onSubmit={handleSubmitGarden}>
           <label>Nome do Jardim:</label>
           <input name="name" value={formGarden.name} onChange={handleEdit} />
           <label>Local do Jardim:</label>
           <input name="local" value={formGarden.local} onChange={handleEdit} />
-          <button type="submit">Salvar Alterações</button>
+
+          <Button
+            type="submit"
+            className="btn btn-light btn-outline-dark btn-sm me-2"
+            style={{
+              backgroundColor: "#7C6053",
+              color: "white",
+              borderColor: "#7C6053",
+            }}
+          >
+            Salvar Alterações
+          </Button>
         </form>
       )}
-      <button onClick={toggleform} type="submit">
+      <Button
+        onClick={toggleform}
+        type="submit"
+        className="btn btn-light btn-outline-dark btn-sm me-2"
+        style={{
+          backgroundColor: "#7C6053",
+          color: "white",
+          borderColor: "#7C6053",
+        }}
+      >
         Editar Jardim
-      </button>
+      </Button>
+
       <div>
         {!isLoading &&
           oneGarden.plants.map((plant) => {
             return (
               <div>
-                    <Card
-                      key={plant._id}
-                      style={{
-                        width: "60vw",
-                        margin: "20px",
-                        alignItems: "center",
-                        borderColor: "#E7E7E7 1.2px",
-                        padding: "12px",
-                        borderRadius: "12px",
-                      }}
-                    >
-                      <Card.Img variant="top" src={plant.plantImage} />
-                      <Card.Body>
-                        <Card.Title>{plant.popularName}</Card.Title>
-                        <Card.Subtitle>{plant.nomeCientifico}</Card.Subtitle>
-                      </Card.Body>
-                      <ListGroup className="list-group-flush">
-                        <ListGroup.Item>
-                          <strong>Origem:</strong> {plant.origem}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                          <strong>Cuidado:</strong> {plant.cuidado}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                          <strong>Luminosidade:</strong> {plant.luminosidade}
-                        </ListGroup.Item>
-            
-                      </ListGroup>
-                      <Card.Body>
-                       
-                      </Card.Body>
-                    </Card>
-                
-                {oneGarden.author === loggedInUser.user._id && (
-                  <button onClick={() => handleDeletePlant(plant._id)}>
+                <Card
+                  key={plant._id}
+                  style={{
+                    width: "60vw",
+                    margin: "20px",
+                    alignItems: "center",
+                    borderColor: "#E7E7E7 1.2px",
+                    padding: "12px",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <Card.Img variant="top" src={plant.plantImage} />
+                  <Card.Body>
+                    <Card.Title>{plant.popularName}</Card.Title>
+                    <Card.Subtitle>{plant.scientificName}</Card.Subtitle>
+                  </Card.Body>
+                  <ListGroup className="list-group-flush">
+                    <ListGroup.Item>
+                      <strong>Origem:</strong> {plant.origin}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <strong>Cuidado:</strong> {plant.care}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <strong>Luminosidade:</strong> {plant.luminosity}
+                    </ListGroup.Item>
+                  </ListGroup>
+                  <Card.Body></Card.Body>
+                </Card>
+
+                {oneGarden.author == loggedInUser.user._id && (
+                  <Button
+                    onClick={() => handleDeletePlant(plant._id)}
+                    className="btn btn-light btn-outline-dark btn-sm me-2"
+                    style={{
+                      backgroundColor: "#7C6053",
+                      color: "white",
+                      borderColor: "#7C6053",
+                    }}
+                  >
+                    {" "}
                     Deletar Planta
-                  </button>
+                  </Button>
                 )}
               </div>
             );
@@ -177,29 +205,37 @@ function MyGarden() {
 
       {/* mostrar os forms de editar jardim e adicionar plantas so pra quem é o dono do garden */}
 
-
-      {oneGarden.author === loggedInUser.user._id && (
+      {oneGarden.author == loggedInUser.user._id && (
         <>
-          <div style={{ display: "flex", width: "90vw",
-    height: "380px", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            
-            <form onSubmit={handleSubmit}>
-              <h2>Adicione uma planta</h2>
-              <label>Nome popular</label>
+          <div>
+            <form
+              style={{
+                display: "flex",
+                width: "90vw",
+                height: "380px",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onSubmit={handleSubmit}
+            >
+              <h2 className="AllSub">Adicione uma planta nova ao seu Jardim!</h2>
+
+              <label>Nome popular:</label>
               <input
                 name="popularName"
                 value={form.popularName}
                 onChange={handleChange}
               />
 
-              <label>Nome Científico</label>
+              <label>Nome Científico:</label>
               <input
                 name="scientificName"
                 value={form.scientificName}
                 onChange={handleChange}
               />
 
-              <label>Origem</label>
+              <label>Origem:</label>
               <input
                 name="origin"
                 value={form.origin}
@@ -208,7 +244,7 @@ function MyGarden() {
                 max={5}
               />
 
-              <label>Nível de Cuidado</label>
+              <label>Nível de Cuidado:</label>
               <input
                 type="number"
                 min={1}
@@ -218,7 +254,7 @@ function MyGarden() {
                 onChange={handleChange}
               />
 
-              <label>Nível de Luminosidade</label>
+              <label>Nível de Luminosidade:</label>
               <input
                 type="number"
                 min={1}
@@ -228,9 +264,20 @@ function MyGarden() {
                 onChange={handleChange}
               />
 
-              <label>Informações</label>
+              <label>Informações:</label>
               <input name="info" value={form.info} onChange={handleChange} />
-              <button type="submit">Adicionar uma planta</button>
+
+              <Button
+                type="submit"
+                className="btn btn-light btn-outline-dark btn-sm me-2"
+                style={{
+                  backgroundColor: "#7C6053",
+                  color: "white",
+                  borderColor: "#7C6053",
+                }}
+              >
+                Adicionar uma planta
+              </Button>
             </form>
           </div>
         </>

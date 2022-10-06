@@ -146,10 +146,7 @@ function Quiz({ id, user }) {
                     Luminosidade: {plant.luminosidade}
                   </ListGroup.Item>
 
-                  <ListGroup.Item>{plant.info.slice(0, 60)}</ListGroup.Item>
-                  <button onClick={(e) => handleAddGarden(e, plant)}>
-                    Adicionar ao meu Jardim
-                  </button>
+                  <ListGroup.Item>{plant.info}</ListGroup.Item>
                 </ListGroup>
               </Card.Body>
             </Card>

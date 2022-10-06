@@ -147,9 +147,6 @@ function Quizz({ id, user }) {
                   </ListGroup.Item>
 
                   <ListGroup.Item>{plant.info.slice(0, 60)}</ListGroup.Item>
-                  <button onClick={(e) => handleAddGarden(e, plant)}>
-                    Adicionar ao meu Jardim
-                  </button>
                 </ListGroup>
               </Card.Body>
             </Card>

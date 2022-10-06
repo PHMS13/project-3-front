@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function CardAllPlants({ plant, handleAddGarden }) {
   const [showDetail, setShowDetail] = useState(false);
@@ -50,11 +51,18 @@ function CardAllPlants({ plant, handleAddGarden }) {
           )}
 
           {window.location.pathname !== "/allplants" && (
+            
+          <Button
+           onClick={(e) => handleAddGarden(e, plant)} className="btnCardAll btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+          }}
+        >
+        Adicionar no "meu Jardim"
+        </Button>
 
-            <button className="btnCardAll" onClick={(e) => handleAddGarden(e, plant)}>
-              Adicionar no "meu Jardim"
-
-            </button>
           )}
         </ListGroup>
       </Card.Body>

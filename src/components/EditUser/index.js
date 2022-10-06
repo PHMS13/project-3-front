@@ -39,7 +39,7 @@ function EditUser({
 
   async function handleDelete() {
     try {
-      await axios.delete(
+      await api.delete(
         `https://ironrest.herokuapp.com/jungle-wd-85-profile/${id}`
       );
 

@@ -288,6 +288,21 @@ Form {
   flex-wrap: wrap;
   font-family: "Lato", sans-serif;
   border-radius: 10px;
+
+}
+.barraSupinpa {
+  margin: 20px;
+  margin-top: 40px;
+  padding: 12px;
+  display: flex;
+  background-color: white;
+  flex-wrap: nowrap;
+  font-family: "Lato", sans-serif;
+  border-radius: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .retirarJar {
