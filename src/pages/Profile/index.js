@@ -122,6 +122,7 @@ function Profile() {
         }}
       >
         <h1 className="AllSub">Meu Perfil</h1>
+
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
       <div className="barraSup">
@@ -130,6 +131,19 @@ function Profile() {
           <strong>Ambiente:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
+
+        <Button
+          onClick={() => setShowForm(!showForm)}
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+          }}>
+          Editar Perfil
+        </Button>
+        <button onClick={handleLogOut}>Sair</button>
+
       </div>
       <Button
         onClick={() => setShowForm(!showForm)}
@@ -192,6 +206,7 @@ function Profile() {
             </>
           )}
         </Accordion>
+
       </div>
       <div
         style={{
@@ -206,6 +221,7 @@ function Profile() {
           <form onSubmit={handleSubmitGarden}>
             <div style={{ display: "flex", margin: " 10px" }}>
               <label> Nome do jardim </label>
+
               <input
                 name="name"
                 value={formGarden.name}
@@ -215,11 +231,13 @@ function Profile() {
 
             <div style={{ display: "flex", margin: " 10px" }}>
               <label> Local do Jardim </label>
+
               <input
                 name="local"
                 value={formGarden.local}
                 onChange={handleChange}
               />
+
             </div>
             <button>DELETAR JARDIM</button>
 
@@ -236,6 +254,57 @@ function Profile() {
               Salvar Jardim{" "}
             </Button>
           </form>
+
+              <label id="label" htmlFor="formResidence">
+                Local:
+              </label>
+              <select
+                required
+                id="formSelect"
+                name="livingSpace"
+                onChange={handleChange}
+                defaultValue={form.residence}>
+                <option value=""></option>
+                <option value="Quintal">Quintal</option>
+                <option value="Varanda">Varanda</option>
+                <option value="Sala">Sala</option>
+                <option value="Quarto">Quarto</option>
+                <option value="Cozinha">Cozinha</option>
+                <option value="Banheiro">Banheiro</option>
+                <option value="Lavanderia">Lavanderia</option>
+                <option value="Outro">Outro</option>
+              </select>
+              <button type="submit">Salvar Jardim</button>
+            </form>
+          </div>
+
+          <h1>Meus Jardins</h1>
+          {!isLoading &&
+            user.garden.map((garden) => {
+              const date = new Date(garden.createdAt);
+
+              const dd = date.getDate();
+              const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
+              const aa = date.getFullYear();
+
+              const hh = date.getHours();
+              const min = date.getMinutes();
+              console.log(garden);
+              return (
+                <div>
+                  <p>
+                    nome: {garden.name} - local: {garden.local}- postado em:{" "}
+                    {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                  </p>
+                  <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
+                  {garden.comments.length > 0 && <h2>Comentários:</h2>}
+                  {garden.comments.map((comments) => {
+                    return comments;
+                  })}
+                </div>
+              );
+            })}
+
         </div>
 
         <div></div>
