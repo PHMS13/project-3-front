@@ -96,17 +96,6 @@ function Profile() {
     }
   }
 
-   // async function handledeleteGarden(e) {
-
-  //   try {
-  //     const response = await api.delete(`/garden/delete/´${idGarden}`, formGarden);
-
-  //     setReload(!reload);
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   console.log(user);
   console.log(isLoading);
@@ -238,8 +227,6 @@ function Profile() {
               />
 
             </div>
-            <button>DELETAR JARDIM</button>
-
             <Button
               type="submit"
               className="btn btn-light btn-outline-dark btn-sm me-2"
@@ -252,7 +239,7 @@ function Profile() {
               Salvar Jardim
             </Button>
           </form>
-
+            
               <label id="label" htmlFor="formResidence">
                 Local:
               </label>
@@ -305,7 +292,7 @@ function Profile() {
 
         </div>
 
-        <div></div>
+      
       </div>
       <h1 className="AllSub">Meus Jardins</h1>
       {!isLoading &&
