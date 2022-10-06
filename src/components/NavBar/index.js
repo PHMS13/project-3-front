@@ -48,9 +48,9 @@ function NavBar() {
       <Link to="/about">
         <Dropdown.Item href="#/action-6">Sobre nós</Dropdown.Item>
       </Link>
-      <Link to="/profile">
+      {/* <Link to="/profile">
         <Dropdown.Item href="#/action-5">Meu perfil</Dropdown.Item>
-      </Link>
+      </Link> */}
       
       </Dropdown.Menu>
     </Dropdown>

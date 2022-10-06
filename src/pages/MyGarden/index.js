@@ -7,6 +7,8 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function MyGarden() {
   const [oneGarden, setOneGarden] = useState({});
@@ -30,6 +32,8 @@ function MyGarden() {
     name: oneGarden.name,
     local: oneGarden.local,
   });
+
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     async function fetchmyGarden() {
@@ -95,26 +99,72 @@ function MyGarden() {
     try {
       await api.put(`/garden/edit/${idGarden}`, formGarden);
       setReload(!reload);
+      setShowForm(!showForm);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function toggleform() {
+    setShowForm(!showForm);
   }
 
   console.log(oneGarden);
   console.log(form);
   return (
     <div>
-      <h1>Local: {oneGarden.local} </h1>
-      <h2>nome do jardim: {oneGarden.name}</h2>
+      <h2>Nome do Jardim: {oneGarden.name}</h2>
+      <h3>Local: {oneGarden.local} </h3>
+      {showForm && (
+        <form onSubmit={handleSubmitGarden}>
+          <label>Nome do Jardim:</label>
+          <input name="name" value={formGarden.name} onChange={handleEdit} />
+          <label>Local do Jardim:</label>
+          <input name="local" value={formGarden.local} onChange={handleEdit} />
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      )}
+      <button onClick={toggleform} type="submit">
+        Editar Jardim
+      </button>
       <div>
-        Card PLANTAS
         {!isLoading &&
           oneGarden.plants.map((plant) => {
             return (
               <div>
-                <h1>{plant.popularName}</h1>
-                <p>{plant.scientificName}</p>
-                <p>{plant.origin}</p>
+                    <Card
+                      key={plant._id}
+                      style={{
+                        width: "60vw",
+                        margin: "20px",
+                        alignItems: "center",
+                        borderColor: "#E7E7E7 1.2px",
+                        padding: "12px",
+                        borderRadius: "12px",
+                      }}
+                    >
+                      <Card.Img variant="top" src={plant.plantImage} />
+                      <Card.Body>
+                        <Card.Title>{plant.popularName}</Card.Title>
+                        <Card.Subtitle>{plant.nomeCientifico}</Card.Subtitle>
+                      </Card.Body>
+                      <ListGroup className="list-group-flush">
+                        <ListGroup.Item>
+                          <strong>Origem:</strong> {plant.origem}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <strong>Cuidado:</strong> {plant.cuidado}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <strong>Luminosidade:</strong> {plant.luminosidade}
+                        </ListGroup.Item>
+            
+                      </ListGroup>
+                      <Card.Body>
+                       
+                      </Card.Body>
+                    </Card>
+                
                 {oneGarden.author == loggedInUser.user._id && (
                   <button onClick={() => handleDeletePlant(plant._id)}>
                     Deletar Planta
@@ -126,11 +176,15 @@ function MyGarden() {
       </div>
 
       {/* mostrar os forms de editar jardim e adicionar plantas so pra quem é o dono do garden */}
+
+
       {oneGarden.author == loggedInUser.user._id && (
         <>
-          <div>
-            <h1>Adicione uma planta</h1>
+          <div style={{ display: "flex", width: "90vw",
+    height: "380px", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+            
             <form onSubmit={handleSubmit}>
+              <h2>Adicione uma planta</h2>
               <label>Nome popular</label>
               <input
                 name="popularName"
@@ -150,6 +204,8 @@ function MyGarden() {
                 name="origin"
                 value={form.origin}
                 onChange={handleChange}
+                min={1}
+                max={5}
               />
 
               <label>Nível de Cuidado</label>
@@ -177,18 +233,6 @@ function MyGarden() {
               <button type="submit">Adicionar uma planta</button>
             </form>
           </div>
-
-          <form onSubmit={handleSubmitGarden}>
-            <label>Nome do Jardim:</label>
-            <input name="name" value={formGarden.name} onChange={handleEdit} />
-            <label>Local do Jardim:</label>
-            <input
-              name="local"
-              value={formGarden.local}
-              onChange={handleEdit}
-            />
-            <button type="submit">Editar Jardim</button>
-          </form>
         </>
       )}
     </div>
