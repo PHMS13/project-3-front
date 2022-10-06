@@ -16,7 +16,6 @@ function MyGarden() {
   const [reload, setReload] = useState(true);
   const [showForm, setShowForm] = useState(false);
 
-
   const { idGarden } = useParams();
   const navigate = useNavigate();
   const { loggedInUser } = useContext(AuthContext);
@@ -34,7 +33,6 @@ function MyGarden() {
     name: oneGarden.name,
     local: oneGarden.local,
   });
-
 
   useEffect(() => {
     async function fetchmyGarden() {
@@ -110,12 +108,23 @@ function MyGarden() {
     setShowForm(!showForm);
   }
 
-  console.log(oneGarden);
+  async function handleDeleteGarden(e) {
+    try {
+      const response = await api.delete(`/garden/delete/${idGarden}`);
+
+      setReload(!reload);
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(idGarden);
   console.log(form);
   return (
     <div>
-      <h2 className="AllSub" >Nome do Jardim:</h2> <h4>{oneGarden.name}</h4>
-      <h3 className="AllSub" >Local: </h3> <h4>{oneGarden.local}</h4>
+      <h2 className="AllSub">Nome do Jardim:</h2> <h4>{oneGarden.name}</h4>
+      <h3 className="AllSub">Local: </h3> <h4>{oneGarden.local}</h4>
       {showForm && (
         <form onSubmit={handleSubmitGarden}>
           <label>Nome do Jardim:</label>
@@ -134,6 +143,10 @@ function MyGarden() {
           >
             Salvar Alterações
           </Button>
+
+          <Button variant="danger">Deletar Jardim</Button>
+            
+        
         </form>
       )}
       <Button
@@ -148,7 +161,6 @@ function MyGarden() {
       >
         Editar Jardim
       </Button>
-
       <div>
         {!isLoading &&
           oneGarden.plants.map((plant) => {
@@ -202,9 +214,7 @@ function MyGarden() {
             );
           })}
       </div>
-
       {/* mostrar os forms de editar jardim e adicionar plantas so pra quem é o dono do garden */}
-
       {oneGarden.author == loggedInUser.user._id && (
         <>
           <div>
@@ -219,7 +229,9 @@ function MyGarden() {
               }}
               onSubmit={handleSubmit}
             >
-              <h2 className="AllSub">Adicione uma planta nova ao seu Jardim!</h2>
+              <h2 className="AllSub">
+                Adicione uma planta nova ao seu Jardim!
+              </h2>
 
               <label>Nome popular:</label>
               <input
