@@ -112,7 +112,7 @@ function Profile() {
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
-          <strong>Espaço:</strong> {user.residence} |
+          <strong>Ambiente:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
 

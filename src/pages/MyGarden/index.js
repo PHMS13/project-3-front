@@ -180,10 +180,10 @@ function MyGarden() {
 
       {oneGarden.author == loggedInUser.user._id && (
         <>
-          <div style={{ display: "flex", width: "90vw",
-    height: "380px", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+          <div >
             
-            <form onSubmit={handleSubmit}>
+            <form style={{ display: "flex", width: "90vw",
+    height: "380px", flexDirection: "column", justifyContent: "center", alignItems: "center"}} onSubmit={handleSubmit}>
               <h2>Adicione uma planta</h2>
               <label>Nome popular</label>
               <input
