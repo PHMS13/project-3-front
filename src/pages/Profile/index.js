@@ -96,10 +96,10 @@ function Profile() {
     }
   }
 
-  // async function handledeleteGarden(e) {
+   // async function handledeleteGarden(e) {
 
   //   try {
-  //     const response = await api.delete(`/garden//delete/´${idGarden}`, formGarden);
+  //     const response = await api.delete(`/garden/delete/´${idGarden}`, formGarden);
 
   //     setReload(!reload);
 
@@ -166,8 +166,7 @@ function Profile() {
           borderColor: "#7C6053",
         }}
       >
-        {" "}
-        Sair{" "}
+        Sair
       </Button>
 
       {showForm === true && (
@@ -250,8 +249,7 @@ function Profile() {
                 borderColor: "#7C6053",
               }}
             >
-              {" "}
-              Salvar Jardim{" "}
+              Salvar Jardim
             </Button>
           
 
