@@ -110,7 +110,6 @@ function MyGarden() {
           oneGarden.plants.map((plant) => {
             return (
               <div>
-                {" "}
                 <h1>{plant.popularName}</h1>
                 <p>{plant.scientificName}</p>
                 <p>{plant.origin}</p>

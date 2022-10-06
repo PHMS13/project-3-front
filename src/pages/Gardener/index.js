@@ -1,6 +1,6 @@
 /* All users + search */
 
-import axios from "axios";
+import { api } from "../../api/api";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button, Form, Row, Col, Card } from "react-bootstrap";
@@ -14,7 +14,7 @@ function Gardener() {
     useEffect(() => {
       async function fetchPlanta() {
         try {
-          const response = await axios.get(
+          const response = await api.get(
             "https://ironrest.herokuapp.com/jungle-wd-85-profile"
           );
           setUser(response.data);
@@ -59,14 +59,10 @@ function Gardener() {
                 }}
                 value={search}
                 onChange={handleSearch}
-                placeholder="Procure um amigo jardineiro"
+                placeholder="Procure um jardineiro"
               />
             </Col>
-            <Link to="/create-profile">
-              <button className="profilesCrie">Crie seu perfil</button>
-            </Link>
           </Row>
-  
           {
             <Row className="d-flex justify-content-evenly mt-4">
               {user

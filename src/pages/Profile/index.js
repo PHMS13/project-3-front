@@ -112,7 +112,7 @@ function Profile() {
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
-          <strong>Moradia:</strong> {user.residence} |
+          <strong>Espaço:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
 
@@ -164,9 +164,11 @@ function Profile() {
             </>
           )}
         </Accordion>
-        <div>
+        <div style={{display: "flex", flexDirection: "column",
+    alignItems: "stretch",
+    flexWrap: "nowrap"}}>
           <div>
-            <p>Criando um Jardim</p>
+            <h2>Crie um Jardim</h2>
             <form onSubmit={handleSubmitGarden}>
               <label>Nome do jardim</label>
               <input
