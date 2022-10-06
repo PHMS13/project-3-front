@@ -11,24 +11,16 @@ function ErrorPage() {
         alignItems: "center",
       }}
     >
-      <h1
-        style={{
-          fontFamily: "Lato",
-          fontWeight: "600",
-          fontSize: "35px",
-          color: "#7c6053",
-          marginTop: "80px",
-        }}
-      >
+      <h1 className="errorTxt">
         Página não encontrada
       </h1>
       <img
-        style={{ width: "50vw", marginTop: "20px" }}
+        className="errorImg"
         src={errorPage}
         alt="Error"
       />
       <Link to="/">
-        <button className="homeInicio2">Retornar à Home</button>
+        <button className="errorBtn">Retornar à Home</button>
       </Link>
     </div>
   );
