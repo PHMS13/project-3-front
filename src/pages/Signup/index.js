@@ -128,7 +128,7 @@ function Signup() {
         type="file"
         onChange={handleImage}
       />
-      {img && <img src={preview} alt="" />}
+      {img && <img style={{maxHeight:"260px"}}  src={preview} alt=""/>}
 
       <label htmlFor="formAge">Idade:</label>
       <input
