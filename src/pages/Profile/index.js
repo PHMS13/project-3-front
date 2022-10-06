@@ -106,7 +106,7 @@ function Profile() {
           justifyContent: "space-between",
         }}
       >
-        <h1 className="AllSub">Perfil</h1>
+        <h1 className="AllSub">Meu Perfil</h1>
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
       <div className="barraSup">
@@ -127,8 +127,16 @@ function Profile() {
         >
           Editar Perfil
         </Button>
-        <button onClick={handleLogOut}>Sair</button>
-      </div>
+
+        <Button
+          onClick={handleLogOut}
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+          }}> Sair </Button>
+     </div>
 
       {showForm === true && (
         <EditUser
@@ -168,7 +176,7 @@ function Profile() {
     alignItems: "stretch",
     flexWrap: "nowrap"}}>
           <div>
-            <h2>Crie um Jardim</h2>
+            <h2 className="AllSub">Crie um Jardim</h2>
             <form onSubmit={handleSubmitGarden}>
               <label>Nome do jardim</label>
               <input
@@ -183,11 +191,19 @@ function Profile() {
                 value={formGarden.local}
                 onChange={handleChange}
               />
-              <button type="submit">Salvar Jardim</button>
+               <Button
+             type="submit"
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+          }}> Salvar Jardim </Button>
+             
             </form>
           </div>
 
-          <h1>Meus Jardins</h1>
+          <h1 className="AllSub">Meus Jardins</h1>
           {!isLoading &&
             user.garden.map((garden) => {
               const date = new Date(garden.createdAt);
