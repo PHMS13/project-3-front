@@ -238,8 +238,8 @@ function Profile() {
             >
               Salvar Jardim
             </Button>
-          </form>
-            
+          
+
               <label id="label" htmlFor="formResidence">
                 Local:
               </label>
@@ -291,9 +291,7 @@ function Profile() {
             })}
 
         </div>
-
       
-      </div>
       <h1 className="AllSub">Meus Jardins</h1>
       {!isLoading &&
         user.garden.map((garden) => {
@@ -330,8 +328,11 @@ function Profile() {
             </Card>
           );
         })}
+        
+    {/* debugado */}
     </div>
-  );
+  )
 }
+
 
 export default Profile;
