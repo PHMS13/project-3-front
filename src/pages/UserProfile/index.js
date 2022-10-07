@@ -1,10 +1,10 @@
-import { useEffect, useState, useParams } from "react";
+import { useEffect, useStat } from "react";
 
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import EditUser from "../../components/EditUser";
 import Card from "react-bootstrap/Card";
-
+import { useParams } from "react-router-dom";
 import profileImage from "../../assets/05 - Imagem.png";
 
 function UserProfile() {
