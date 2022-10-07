@@ -46,7 +46,7 @@ function Gardener() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "150px",
+          marginTop: "30px",
         }}>
         <Col
           className="col-10"

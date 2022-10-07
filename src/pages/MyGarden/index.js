@@ -146,7 +146,8 @@ function MyGarden() {
             backgroundColor: "#7C6053",
             color: "white",
             borderColor: "#7C6053",
-            marginTop: "20px",
+            marginTop: "0px",
+            marginBottom: "30px",
           }}
         >
           Editar Jardim
@@ -156,9 +157,9 @@ function MyGarden() {
       {showForm && (
         <form onSubmit={handleSubmitGarden}>
           <label>Nome do Jardim:</label>
-          <input name="name" value={formGarden.name} onChange={handleEdit} />
+          <input name="name" value={formGarden.name} onChange={handleEdit} id="inscreverInfo"/>
           <label>Local do Jardim:</label>
-          <input name="local" value={formGarden.local} onChange={handleEdit} />
+          <input name="local" value={formGarden.local} onChange={handleEdit} id="inscreverInfo"/>
 
           <Button
             type="submit"
@@ -248,7 +249,7 @@ function MyGarden() {
             >
               <h2
                 className="AllSub"
-                style={{ marginTop: "230px", width: "180px" }}
+                style={{ marginTop: "300px", width: "180px" }}
               >
                 Adicione uma planta nova ao seu Jardim!
               </h2>
