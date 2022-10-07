@@ -296,6 +296,34 @@ label {
   width: 30vw;
 }
 
+.profileCardTitle {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  color: #3D5933;
+  margin-top:6px;
+  margin-bottom: 0px;
+}
+
+.profileCardSub {
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  color: #3D5933;
+  
+}
+
+.profileCardText {
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  color: #7B9B75;
+}
+
+.profileCardLink {
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  color: #507849;
+
+}
 
 .h5 {
   font-size: 18px !important;
