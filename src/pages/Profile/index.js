@@ -2,15 +2,11 @@ import { useEffect, useState } from "react";
 
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
-import MyGarden from "../../components/MyGarden";
 import Card from "react-bootstrap/Card";
 
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
-import AllPlants from "../Allplants";
 
 import { Button, Accordion } from "react-bootstrap";
 
@@ -35,6 +31,8 @@ function Profile() {
   function handleChange(e) {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
+
+  
 
   console.log(formGarden);
 
@@ -90,18 +88,32 @@ function Profile() {
       setFormGarden({
         name: "",
         local: "",
-      });
+      })
     } catch (error) {
       console.log(error);
     }
   }
 
 
+
+  // async function handledeleteGarden(e) {
+
+  //   try {
+  //     const response = await api.delete(`/garden/delete/´${idGarden}`, formGarden);
+
+  //     setReload(!reload);
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+
   console.log(user);
   console.log(isLoading);
 
   return (
-    <div>
+    <div style={{backgroundColor:"#EDDDD6"}} >
       <div
         style={{
           display: "flex",
@@ -128,35 +140,24 @@ function Profile() {
             backgroundColor: "#7C6053",
             color: "white",
             borderColor: "#7C6053",
-          }}>
+            margin: "10px",
+          }}
+        >
           Editar Perfil
         </Button>
-        <button onClick={handleLogOut}>Sair</button>
-
+        <button
+          onClick={handleLogOut}
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+            margin: "10px",
+          }}
+        >
+          Sair
+        </button>
       </div>
-      <Button
-        onClick={() => setShowForm(!showForm)}
-        className="btn btn-light btn-outline-dark btn-sm me-2"
-        style={{
-          backgroundColor: "#7C6053",
-          color: "white",
-          borderColor: "#7C6053",
-        }}
-      >
-        Editar Perfil
-      </Button>
-
-      <Button
-        onClick={handleLogOut}
-        className="btn btn-light btn-outline-dark btn-sm me-2"
-        style={{
-          backgroundColor: "#7C6053",
-          color: "white",
-          borderColor: "#7C6053",
-        }}
-      >
-        Sair
-      </Button>
 
       {showForm === true && (
         <EditUser
@@ -175,7 +176,7 @@ function Profile() {
           {!isLoading && (
             <>
               <Accordion.Item eventKey="2">
-                <Accordion.Header className="AllSub">
+                <Accordion.Header className="profileSanfona">
                   Quiz de Plantas
                 </Accordion.Header>
                 <Accordion.Body>
@@ -194,7 +195,6 @@ function Profile() {
             </>
           )}
         </Accordion>
-
       </div>
       <div
         style={{
@@ -218,15 +218,28 @@ function Profile() {
             </div>
 
             <div style={{ display: "flex", margin: " 10px" }}>
-              <label> Local do Jardim </label>
-
-              <input
-                name="local"
-                value={formGarden.local}
-                onChange={handleChange}
-              />
-
+              <label style={{ margin: " 10px" }}> Local do Jardim </label>
+              <select
+              required
+              id="formSelect"
+              name="livingSpace"
+              onChange={handleChange}
+              defaultValue={form.residence}
+            >
+              <option value=""></option>
+              <option value="Quintal">Quintal</option>
+              <option value="Varanda">Varanda</option>
+              <option value="Sala">Sala</option>
+              <option value="Quarto">Quarto</option>
+              <option value="Cozinha">Cozinha</option>
+              <option value="Banheiro">Banheiro</option>
+              <option value="Lavanderia">Lavanderia</option>
+              <option value="Outro">Outro</option>
+            </select>
             </div>
+
+            <button className="btn btn-light btn-outline-dark btn-sm me-2" style={{ backgroundColor:"#dc3545", color:"white", borderColor:"#dc3545" }}>Deletar Jardim</button>
+
             <Button
               type="submit"
               className="btn btn-light btn-outline-dark btn-sm me-2"
@@ -238,60 +251,38 @@ function Profile() {
             >
               Salvar Jardim
             </Button>
-          
 
-              <label id="label" htmlFor="formResidence">
-                Local:
-              </label>
-              <select
-                required
-                id="formSelect"
-                name="livingSpace"
-                onChange={handleChange}
-                defaultValue={form.residence}>
-                <option value=""></option>
-                <option value="Quintal">Quintal</option>
-                <option value="Varanda">Varanda</option>
-                <option value="Sala">Sala</option>
-                <option value="Quarto">Quarto</option>
-                <option value="Cozinha">Cozinha</option>
-                <option value="Banheiro">Banheiro</option>
-                <option value="Lavanderia">Lavanderia</option>
-                <option value="Outro">Outro</option>
-              </select>
-              <button type="submit">Salvar Jardim</button>
-            </form>
-          </div>
-
-          <h1>Meus Jardins</h1>
-          {!isLoading &&
-            user.garden.map((garden) => {
-              const date = new Date(garden.createdAt);
-
-              const dd = date.getDate();
-              const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
-              const aa = date.getFullYear();
-
-              const hh = date.getHours();
-              const min = date.getMinutes();
-              console.log(garden);
-              return (
-                <div>
-                  <p>
-                    nome: {garden.name} - local: {garden.local}- postado em:{" "}
-                    {dd}/{mm}/{aa} - {hh}:{min}{" "}
-                  </p>
-                  <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
-                  {garden.comments.length > 0 && <h2>Comentários:</h2>}
-                  {garden.comments.map((comments) => {
-                    return comments;
-                  })}
-                </div>
-              );
-            })}
-
+          </form>
         </div>
-      
+
+        <h1>Meus Jardins</h1>
+        {!isLoading &&
+          user.garden.map((garden) => {
+            const date = new Date(garden.createdAt);
+
+            const dd = date.getDate();
+            const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
+            const aa = date.getFullYear();
+
+            const hh = date.getHours();
+            const min = date.getMinutes();
+            console.log(garden);
+            return (
+              <div>
+                <p>
+                  nome: {garden.name} - local: {garden.local}- postado em: {dd}/
+                  {mm}/{aa} - {hh}:{min}{" "}
+                </p>
+                <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
+                {garden.comments.length > 0 && <h2>Comentários:</h2>}
+                {garden.comments.map((comments) => {
+                  return comments;
+                })}
+              </div>
+            );
+          })}
+      </div>
+
       <h1 className="AllSub">Meus Jardins</h1>
       {!isLoading &&
         user.garden.map((garden) => {
@@ -328,11 +319,10 @@ function Profile() {
             </Card>
           );
         })}
-        
-    {/* debugado */}
-    </div>
-  )
-}
 
+      {/* debugado */}
+    </div>
+  );
+}
 
 export default Profile;
