@@ -85,13 +85,17 @@ function Signup() {
           alignItems: "center",
           justifyContent: "center",
           marginBottom: "30px",
-        }}>
+        }}
+      >
+
         <h1 className="formTitle">Inscreva-se</h1>
         <img src={formHead} className="formHead" alt="form" />
       </div>
 
       <form id="inscreverForm" onSubmit={handleSubmit}>
-        <label htmlFor="formName">Nome:</label>
+
+        <label htmlFor="formName">Nome: *</label>
+
         <input
           id="inscreverInfo"
           name="username"
@@ -100,7 +104,8 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <label htmlFor="formEmail">E-mail:</label>
+        <label htmlFor="formEmail">E-mail: *</label>
+
         <input
           id="inscreverInfo"
           name="email"
@@ -109,7 +114,8 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <label htmlFor="formPassword">Senha:</label>
+        <label htmlFor="formPassword">Senha: *</label>
+
         <input
           id="inscreverInfo"
           name="password"
@@ -118,7 +124,8 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <label htmlFor="formConfirmPassword">Confirmação de senha:</label>
+        <label htmlFor="formConfirmPassword">Confirmação de senha: *</label>
+
         <input
           id="inscreverInfo"
           type="password"
@@ -136,7 +143,8 @@ function Signup() {
         />
         {img && <img style={{ maxHeight: "260px" }} src={preview} alt="" />}
 
-        <label htmlFor="formAge">(opcional)Idade:</label>
+        <label htmlFor="formAge">Idade:</label>
+
         <input
           id="inscreverInfo"
           name="age"
@@ -145,7 +153,8 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <label htmlFor="formCountry">País:</label>
+        <label htmlFor="formCountry">País: *</label>
+
         <input
           id="inscreverInfo"
           name="country"
@@ -154,7 +163,8 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <label htmlFor="formCity">Cidade:</label>
+        <label htmlFor="formCity">Cidade: *</label>
+
         <input
           id="inscreverInfo"
           name="city"
@@ -164,14 +174,17 @@ function Signup() {
         />
 
         <label id="label" htmlFor="formResidence">
-          Residência:
+          Residência: *
+
         </label>
         <select
           required
           id="formSelect"
           name="residence"
           onChange={handleChange}
-          defaultValue={form.residence}>
+          defaultValue={form.residence}
+        >
+
           <option value=""></option>
           <option value="Apartamento">Apartamento</option>
           <option value="Casa">Casa</option>

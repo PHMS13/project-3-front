@@ -2,15 +2,11 @@ import { useEffect, useState } from "react";
 
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { getDefaultNormalizer } from "@testing-library/react";
 import EditUser from "../../components/EditUser";
-import MyGarden from "../../components/MyGarden";
 import Card from "react-bootstrap/Card";
 
 import profileImage from "../../assets/05 - Imagem.png";
 import Quiz from "../Quiz";
-import AllPlants from "../Allplants";
 
 import { Button, Accordion } from "react-bootstrap";
 
@@ -35,6 +31,8 @@ function Profile() {
   function handleChange(e) {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
+
+  
 
   console.log(formGarden);
 
@@ -90,7 +88,7 @@ function Profile() {
       setFormGarden({
         name: "",
         local: "",
-      });
+      })
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +99,7 @@ function Profile() {
   console.log(isLoading);
 
   return (
-    <div>
+    <div style={{backgroundColor:"#EDDDD6"}} >
       <div
         style={{
           display: "flex",
@@ -175,7 +173,7 @@ function Profile() {
           {!isLoading && (
             <>
               <Accordion.Item eventKey="2">
-                <Accordion.Header className="AllSub">
+                <Accordion.Header className="profileSanfona">
                   Quiz de Plantas
                 </Accordion.Header>
                 <Accordion.Body>
@@ -244,33 +242,49 @@ function Profile() {
                 Local:
               </label>
               <select
-                required
-                id="formSelect"
-                name="livingSpace"
-                onChange={handleChange}
-                defaultValue={form.residence}>
-                <option value=""></option>
-                <option value="Quintal">Quintal</option>
-                <option value="Varanda">Varanda</option>
-                <option value="Sala">Sala</option>
-                <option value="Quarto">Quarto</option>
-                <option value="Cozinha">Cozinha</option>
-                <option value="Banheiro">Banheiro</option>
-                <option value="Lavanderia">Lavanderia</option>
-                <option value="Outro">Outro</option>
-              </select>
-              <button type="submit">Salvar Jardim</button>
-            </form>
-          </div>
+              required
+              id="formSelect"
+              name="livingSpace"
+              onChange={handleChange}
+              defaultValue={form.residence}
+            >
+              <option value=""></option>
+              <option value="Quintal">Quintal</option>
+              <option value="Varanda">Varanda</option>
+              <option value="Sala">Sala</option>
+              <option value="Quarto">Quarto</option>
+              <option value="Cozinha">Cozinha</option>
+              <option value="Banheiro">Banheiro</option>
+              <option value="Lavanderia">Lavanderia</option>
+              <option value="Outro">Outro</option>
+            </select>
+            </div>
+
+            <button className="btn btn-light btn-outline-dark btn-sm me-2" style={{ backgroundColor:"#dc3545", color:"white", borderColor:"#dc3545" }}>Deletar Jardim</button>
+
+            <Button
+              type="submit"
+              className="btn btn-light btn-outline-dark btn-sm me-2"
+              style={{
+                backgroundColor: "#7C6053",
+                color: "white",
+                borderColor: "#7C6053",
+              }}
+            >
+              Salvar Jardim
+            </Button>
+
+          </form>
+        </div>
 
       
-          {!isLoading &&
-            user.garden.map((garden) => {
-              const date = new Date(garden.createdAt);
+        {!isLoading &&
+          user.garden.map((garden) => {
+            const date = new Date(garden.createdAt);
 
-              const dd = date.getDate();
-              const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
-              const aa = date.getFullYear();
+            const dd = date.getDate();
+            const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
+            const aa = date.getFullYear();
 
               const hh = date.getHours();
               const min = date.getMinutes();
@@ -290,7 +304,6 @@ function Profile() {
               );
             })}
 
-        </div>
       
       <h1 className="AllSub">Meus Jardins</h1>
       {!isLoading &&
@@ -328,11 +341,10 @@ function Profile() {
             </Card>
           );
         })}
-        
-    {/* debugado */}
-    </div>
-  )
-}
 
+      {/* debugado */}
+    </div>
+  );
+}
 
 export default Profile;
