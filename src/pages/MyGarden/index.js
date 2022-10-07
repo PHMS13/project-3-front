@@ -144,7 +144,9 @@ function MyGarden() {
             Salvar Alterações
           </Button>
 
-          <Button variant="danger">Deletar Jardim</Button>
+          <Button variant="danger" onClick={handleDeleteGarden}>
+            Deletar Jardim
+          </Button>
         </form>
       )}
       <Button
@@ -198,7 +200,10 @@ function MyGarden() {
                   <Button
                     onClick={() => handleDeletePlant(plant._id)}
                     className="btn btn-light btn-outline-dark btn-sm me-2"
-                   variant="danger"> Deletar Planta
+                    variant="danger"
+                  >
+                    {" "}
+                    Deletar Planta
                   </Button>
                 )}
               </div>

@@ -29,13 +29,11 @@ function Gardener() {
     setSearch(e.target.value);
   }
 
-  console.log(users);
+  console.log(search);
 
   return (
     <>
-      <div
-className="divGardener"
-      >
+      <div className="divGardener">
         <p className="profilesSub">
           Outros jardineiros já estão por aqui, vamos espiar a grama do vizinho?
           :)
@@ -49,16 +47,14 @@ className="divGardener"
           flexDirection: "column",
           alignItems: "center",
           marginTop: "150px",
-        }}
-      >
+        }}>
         <Col
           className="col-10"
           style={{
             width: "60vw",
-            minWidth:"300px",
+            minWidth: "300px",
             marginTop: "0px",
-          }}
-        >
+          }}>
           <Form.Control
             style={{
               borderRadius: "14px",
@@ -85,11 +81,10 @@ className="divGardener"
                     width: "14rem",
                     margin: "20px",
                     alignItems: "center",
-                  }}
-                >
+                  }}>
                   <Card.Img
                     variant="top"
-                    src={imgPerfil}
+                    src={`${user.profileImage}`}
                     style={{ width: "180px", marginTop: "13px" }}
                   />
                   <Card.Body>
@@ -114,8 +109,7 @@ className="divGardener"
                           borderColor: "#7C6053",
                           fontSize: "14px",
                         }}
-                        variant="dark"
-                      >
+                        variant="dark">
                         Perfil Completo
                       </Button>
                     </Link>

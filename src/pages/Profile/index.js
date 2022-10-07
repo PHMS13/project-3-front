@@ -32,8 +32,6 @@ function Profile() {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
 
-  
-
   console.log(formGarden);
 
   //states das perguntas
@@ -88,18 +86,17 @@ function Profile() {
       setFormGarden({
         name: "",
         local: "",
-      })
+      });
     } catch (error) {
       console.log(error);
     }
   }
 
-
   console.log(user);
   console.log(isLoading);
 
   return (
-    <div style={{backgroundColor:"#EDDDD6"}} >
+    <div style={{ backgroundColor: "#EDDDD6" }}>
       <div
         style={{
           display: "flex",
@@ -112,6 +109,7 @@ function Profile() {
 
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
+
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
@@ -126,12 +124,25 @@ function Profile() {
             backgroundColor: "#7C6053",
             color: "white",
             borderColor: "#7C6053",
-          }}>
+            margin: "10px",
+          }}
+        >
           Editar Perfil
         </Button>
-        <button onClick={handleLogOut}>Sair</button>
-
+        <button
+          onClick={handleLogOut}
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+            margin: "10px",
+          }}
+        >
+          Sair
+        </button>
       </div>
+
       <Button
         onClick={() => setShowForm(!showForm)}
         className="btn btn-light btn-outline-dark btn-sm me-2"
@@ -192,8 +203,8 @@ function Profile() {
             </>
           )}
         </Accordion>
-
       </div>
+
       <div
         style={{
           display: "flex",
@@ -215,18 +226,26 @@ function Profile() {
               />
             </div>
 
-            <div style={{ display: "flex", margin: " 10px" }}>
-              <label> Local do Jardim </label>
-
-              <input
-                name="local"
-                value={formGarden.local}
-                onChange={handleChange}
-              />
-              </div>
-            </form>
-            </div>
-
+            <label id="label" htmlFor="formResidence">
+              Local:
+            </label>
+            <select
+              required
+              id="formSelect"
+              name="local"
+              onChange={handleChange}
+              defaultValue={formGarden.local}
+            >
+              <option value=""></option>
+              <option value="Quintal">Quintal</option>
+              <option value="Varanda">Varanda</option>
+              <option value="Sala">Sala</option>
+              <option value="Quarto">Quarto</option>
+              <option value="Cozinha">Cozinha</option>
+              <option value="Banheiro">Banheiro</option>
+              <option value="Lavanderia">Lavanderia</option>
+              <option value="Outro">Outro</option>
+            </select>
             <Button
               type="submit"
               className="btn btn-light btn-outline-dark btn-sm me-2"
@@ -238,45 +257,11 @@ function Profile() {
             >
               Salvar Jardim
             </Button>
-
-              <label id="label" htmlFor="formResidence">
-                Local:
-              </label>
-              <select
-              required
-              id="formSelect"
-              name="livingSpace"
-              onChange={handleChange}
-              defaultValue={form.residence}
-              >
-              <option value=""></option>
-              <option value="Quintal">Quintal</option>
-              <option value="Varanda">Varanda</option>
-              <option value="Sala">Sala</option>
-              <option value="Quarto">Quarto</option>
-              <option value="Cozinha">Cozinha</option>
-              <option value="Banheiro">Banheiro</option>
-              <option value="Lavanderia">Lavanderia</option>
-              <option value="Outro">Outro</option>
-            </select>
-            </div>
-
-            <button className="btn btn-light btn-outline-dark btn-sm me-2" style={{ backgroundColor:"#dc3545", color:"white", borderColor:"#dc3545" }}>Deletar Jardim</button>
-
-            <Button
-              type="submit"
-              className="btn btn-light btn-outline-dark btn-sm me-2"
-              style={{
-                backgroundColor: "#7C6053",
-                color: "white",
-                borderColor: "#7C6053",
-              }}
-              >
-              Salvar Jardim
-            </Button>
-
           </form>
-        
+        </div>
+      </div>
+      <div>
+        <h1 className="AllSub">Meus Jardins</h1>
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
@@ -285,72 +270,47 @@ function Profile() {
             const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
             const aa = date.getFullYear();
 
-              const hh = date.getHours();
-              const min = date.getMinutes();
-              console.log(garden);
-              return (
-                <div>
-                  <p>
-                    nome: {garden.name} - local: {garden.local}- postado em:{" "}
-                    {dd}/{mm}/{aa} - {hh}:{min}{" "}
-                  </p>
-                  <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
-                  {garden.comments.length > 0 && <h2>Comentários:</h2>}
-                  {garden.comments.map((comments) => {
-                    return comments;
-                  })}
-                </div>
-              );
-            })}
+            const hh = date.getHours();
+            const min = date.getMinutes();
+            console.log(garden);
 
-
-      
-      <h1 className="AllSub">Meus Jardins</h1>
-
-      {!isLoading &&
-        user.garden.map((garden) => {
-          const date = new Date(garden.createdAt);
-
-          const dd = date.getDate();
-          const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
-          const aa = date.getFullYear();
-
-          const hh = date.getHours();
-          const min = date.getMinutes();
-          console.log(garden);
-
-          return (
-            <div>
-              <Card style={{ width: "18rem", marginTop:"16px" }}>
-              <Card.Body>
-                <Card.Title>
-                <p className="profileCardTitle">
-                <strong>{garden.name}</strong>
-                </p>
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                <p className="profileCardSub">
-                  <strong>local:</strong> {garden.local}
-                </p>
-                </Card.Subtitle>
-                <Card.Text>
-                  <p className="profileCardText">
-                    <strong>postado em:</strong> {dd}/{mm}/{aa} - {hh}:{min}{" "}
-                  </p>
-                </Card.Text>
-                <Card.Link>
-                  <Link to={`/mygarden/${garden._id}`} className="profileCardLink">Explore seu Jardim</Link>
-                </Card.Link>
-                {garden.comments.length > 0 && <h2>Comentários:</h2>}
-                {garden.comments.map((comments) => {
-                  return <p>{comments.content}</p>;
-                })}
-              </Card.Body>
-            </Card>
-          );
-        })}
-
-      {/* debugado */}
+            return (
+              <div>
+                <Card style={{ width: "18rem", marginTop: "16px" }}>
+                  <Card.Body>
+                    <Card.Title>
+                      <p className="profileCardTitle">
+                        <strong>{garden.name}</strong>
+                      </p>
+                    </Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      <p className="profileCardSub">
+                        <strong>local:</strong> {garden.local}
+                      </p>
+                    </Card.Subtitle>
+                    <Card.Text>
+                      <p className="profileCardText">
+                        <strong>postado em:</strong> {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                      </p>
+                    </Card.Text>
+                    <Card.Link>
+                      <Link
+                        to={`/mygarden/${garden._id}`}
+                        className="profileCardLink"
+                      >
+                        Explore seu Jardim
+                      </Link>
+                    </Card.Link>
+                    {garden.comments.length > 0 && <h2>Comentários:</h2>}
+                    {garden.comments.map((comments) => {
+                      return <p>{comments.content}</p>;
+                    })}
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
