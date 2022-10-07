@@ -143,30 +143,6 @@ function Profile() {
         </button>
       </div>
 
-      <Button
-        onClick={() => setShowForm(!showForm)}
-        className="btn btn-light btn-outline-dark btn-sm me-2"
-        style={{
-          backgroundColor: "#7C6053",
-          color: "white",
-          borderColor: "#7C6053",
-        }}
-      >
-        Editar Perfil
-      </Button>
-
-      <Button
-        onClick={handleLogOut}
-        className="btn btn-light btn-outline-dark btn-sm me-2"
-        style={{
-          backgroundColor: "#7C6053",
-          color: "white",
-          borderColor: "#7C6053",
-        }}
-      >
-        Sair
-      </Button>
-
       {showForm === true && (
         <EditUser
           form={form}
