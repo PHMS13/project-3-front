@@ -73,7 +73,7 @@ function AllPlants({ user, id }) {
                 marginBottom: "30px",
               }}
             >
-              <h1 className="SubAll">Conheça nossas sujestões de plantas para o seu Jardim! </h1>
+              <h1 className="SubAll">Conheça nossas sugestões de plantas para o seu Jardim! </h1>
               <img src={imgAllPlants} alt="planta" className="imgAllPlants" />
             </div>
 
@@ -84,6 +84,7 @@ function AllPlants({ user, id }) {
                 justifyContent: "center",
                 marginTop: "20px",
                 marginBottom: "16px",
+                
               }}
             >
               <Form.Control

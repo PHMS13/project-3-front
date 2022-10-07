@@ -60,7 +60,7 @@ function EditUser({
       </Modal.Header>
       <Modal.Body>
         <Form>
-           <Form.Label>
+          <Form.Label>
             <strong>Imagem do Perfil</strong>
           </Form.Label>
           <Form.Control
@@ -127,7 +127,8 @@ function EditUser({
             required
             name="residence"
             onChange={handleChange}
-            defaultValue={form.residence}>
+            defaultValue={form.residence}
+          >
             <option value=""></option>
             <option value="Apartamento">Apartamento</option>
             <option value="Casa">Casa</option>
@@ -143,14 +144,18 @@ function EditUser({
           variant="danger"
           className="text-light fw-semibold"
           onClick={handleDelete}
-          size="sm">
+          size="sm"
+          style={{ marginTop: "30px" }}
+        >
           Delete esse perfil
         </Button>
         <Button
           variant="success"
           onClick={handleSubmit}
           className="text-light fw-semibold"
-          size="sm">
+          size="sm"
+          style={{ marginTop: "30px" }}
+        >
           {" "}
           Salvar
         </Button>

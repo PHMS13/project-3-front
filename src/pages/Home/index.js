@@ -8,10 +8,10 @@ function Home() {
       <div className="homeBackground">
         <div className="homeBody">
           <p className="homeTxtInicio">
-            Nosso projeto tem o intuito de te ajudar a encontrar a planta que
-            mais se encaixa com a sua casa e personalidade. Queremos te ajudar a
-            fazer o seu ambiente ficar ainda mais aconchegante e verde! Sinta-se
-            à vontade por aqui!
+            Nosso projeto tem o intuito de te ajudar a encontrar a planta que 
+            <strong> mais se encaixa</strong> com a sua casa e personalidade. Queremos te ajudar a
+            fazer o seu ambiente ficar ainda mais aconchegante e verde! <strong>Sinta-se
+            à vontade por aqui!</strong>
           </p>
           <div style={{display: "flex", alignItems: "center", flexDirection: "column", flexWrap: "nowrap"}}>{/*  nessa div, flex flex direction coll */}
             <Link to="/signup">

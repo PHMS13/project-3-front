@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import loginImg from '../../assets/08 - Criadores.png'
+import loginImg from '../../assets/02 - Criar Perfil.png'
 
 function Login() {
   const [form, setForm] = useState({

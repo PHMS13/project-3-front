@@ -16,6 +16,7 @@ function AboutUs() {
           justifyContent: "space-between",
           marginTop: "50px",
           marginBottom: "60px",
+          backgroundColor:"#EDDDD6"
         }}
       >
         <h1 className="subAbout">Os criadores</h1>
@@ -23,7 +24,8 @@ function AboutUs() {
           src={criadores}
           alt="criadores"
           style={{
-            width: "70vw",
+            width: "50vw",
+            minWidth:"230px",
             backgroundSize: "cover"
           }}
         />
@@ -33,7 +35,7 @@ function AboutUs() {
         alt="pedroMaciel"
         style={{
           width: "40vw",
-          borderRadius: "280px",
+          maxWidth:"240px",
         }}
       />
       <h1 className="nomeAbout">Pedro Maciel</h1>
@@ -43,7 +45,7 @@ function AboutUs() {
         alt="tamiresBraga"
         style={{
           width: "40vw",
-          borderRadius: "280px",
+          maxWidth:"240px",
         }}
       />
       <h1 className="nomeAbout">Tamires Braga</h1>
@@ -53,6 +55,7 @@ function AboutUs() {
         alt="leonardoNunes"
         style={{
           width: "40vw",
+          maxWidth:"240px",
         }}
       />
       <h1 className="nomeAbout" style={{ marginBottom: "120px" }}>
