@@ -17,10 +17,6 @@ function MyGarden({ user, id, reload, setReload, isLoading }) {
     );
 
     setReload(!reload);
-
-    //fazer o SPLICE
-
-    //.slice(0, 60)
   }
 
   return (

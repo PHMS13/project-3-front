@@ -94,6 +94,8 @@ function Profile() {
     }
   }
 
+
+
   // async function handledeleteGarden(e) {
 
   //   try {
@@ -105,6 +107,7 @@ function Profile() {
   //     console.log(error);
   //   }
   // }
+
 
   console.log(user);
   console.log(isLoading);
@@ -234,6 +237,7 @@ function Profile() {
               <option value="Outro">Outro</option>
             </select>
             </div>
+
             <button className="btn btn-light btn-outline-dark btn-sm me-2" style={{ backgroundColor:"#dc3545", color:"white", borderColor:"#dc3545" }}>Deletar Jardim</button>
 
             <Button
