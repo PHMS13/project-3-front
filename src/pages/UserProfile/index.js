@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import EditUser from "../../components/EditUser";
 import Card from "react-bootstrap/Card";
 import { useParams } from "react-router-dom";
 import profileImage from "../../assets/05 - Imagem.png";
+
 function UserProfile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
   const [user, setUser] = useState({ username: "", email: "" });
@@ -14,15 +16,18 @@ function UserProfile() {
   const [reload, setReload] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
+
   const [formGarden, setFormGarden] = useState({
     name: "",
     local: "",
   });
+
   function handleChange(e) {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
   console.log(formGarden);
   //states das perguntas
+
   const [form, setForm] = useState({
     profileImage: "",
     username: "",
@@ -32,12 +37,14 @@ function UserProfile() {
     residence: "",
     garden: [],
   });
+
   useEffect(() => {
     async function fetchUser() {
       setIsLoading(true);
       try {
         const response = await api.get(`/users/user/${idUser}`);
         setUser(response.data);
+
         setForm(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -46,21 +53,25 @@ function UserProfile() {
     }
     fetchUser();
   }, [reload]);
+
   /*   function handleAccordion() {
     console.log("dentro da funcao");
     setReload(!reload);
   } */
   console.log(user);
+
   function handleLogOut(e) {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
     navigate("/");
   }
   console.log(user);
+
   async function handleSubmitGarden(e) {
     e.preventDefault();
     try {
       const response = await api.post(`/garden/create`, formGarden);
+
       setReload(!reload);
       setFormGarden({
         name: "",
@@ -70,8 +81,10 @@ function UserProfile() {
       console.log(error);
     }
   }
+
   console.log(user);
   console.log(isLoading);
+
   return (
     <div style={{ backgroundColor: "#EDDDD6" }}>
       <div
@@ -82,8 +95,10 @@ function UserProfile() {
           justifyContent: "space-between",
         }}>
         <h1 className="AllSub">Perfil do Jardineiro</h1>
+
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
+
       <div className="barraSup">
         <span className="username">{user.username}</span>
         <span>
@@ -91,6 +106,7 @@ function UserProfile() {
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
       </div>
+
       {showForm === true && (
         <EditUser
           form={form}
@@ -102,6 +118,7 @@ function UserProfile() {
           showForm={showForm}
         />
       )}
+
       <div
         style={{
           display: "flex",
@@ -114,12 +131,14 @@ function UserProfile() {
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
+
             const dd = date.getDate();
             const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
             const aa = date.getFullYear();
             const hh = date.getHours();
             const min = date.getMinutes();
             console.log(garden);
+
             return (
               <div>
                 <Card style={{ width: "18rem", marginTop: "16px" }}>
