@@ -125,6 +125,7 @@ function Profile() {
             color: "white",
             borderColor: "#7C6053",
             margin: "10px",
+            marginTop: "16px",
           }}
         >
           Editar Perfil
@@ -137,6 +138,7 @@ function Profile() {
             color: "white",
             borderColor: "#7C6053",
             margin: "10px",
+            marginTop: "16px",
           }}
         >
           Sair
@@ -236,8 +238,8 @@ function Profile() {
           </form>
         </div>
       </div>
-      <div>
-        <h1 className="AllSub">Meus Jardins</h1>
+      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}} >
+        <h1 className="AllSub" style={{color:"#507849"}} >Meus Jardins</h1>
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
