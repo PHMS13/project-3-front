@@ -7,7 +7,6 @@ import Card from "react-bootstrap/Card";
 
 import profileImage from "../../assets/05 - Imagem.png";
 
-
 function UserProfile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
 
@@ -19,7 +18,6 @@ function UserProfile() {
   const [reload, setReload] = useState(true);
 
   const [showForm, setShowForm] = useState(false);
-  
 
   const navigate = useNavigate();
 
@@ -101,8 +99,7 @@ function UserProfile() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-        }}
-      >
+        }}>
         <h1 className="AllSub">Perfil do Jardineiro</h1>
 
         <img src={profileImage} alt="plantinha" className="profileImg" />
@@ -114,7 +111,6 @@ function UserProfile() {
           <strong>Ambiente:</strong> {user.residence} |
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
-
       </div>
 
       {showForm === true && (
@@ -128,9 +124,16 @@ function UserProfile() {
           showForm={showForm}
         />
       )}
-       
-      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}} >
-        <h1 className="AllSub" style={{color:"#507849"}} >Meus Jardins</h1>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}>
+        <h1 className="AllSub" style={{ color: "#507849" }}>
+          Meus Jardins
+        </h1>
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
@@ -165,8 +168,7 @@ function UserProfile() {
                     <Card.Link>
                       <Link
                         to={`/mygarden/${garden._id}`}
-                        className="profileCardLink"
-                      >
+                        className="profileCardLink">
                         Explore estes jardins
                       </Link>
                     </Card.Link>
