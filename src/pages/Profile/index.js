@@ -250,34 +250,7 @@ function Profile() {
             </Button>
           </form>
         </div>
-
-        <h1>Meus Jardins</h1>
-        {!isLoading &&
-          user.garden.map((garden) => {
-            const date = new Date(garden.createdAt);
-
-            const dd = date.getDate();
-            const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
-            const aa = date.getFullYear();
-
-            const hh = date.getHours();
-            const min = date.getMinutes();
-            console.log(garden);
-            return (
-              <div>
-                <p>
-                  nome: {garden.name} - local: {garden.local}- postado em: {dd}/
-                  {mm}/{aa} - {hh}:{min}{" "}
-                </p>
-                <Link to={`/mygarden/${garden._id}`}>Vá para o jardim</Link>
-                {garden.comments.length > 0 && <h2>Comentários:</h2>}
-                {garden.comments.map((comments) => {
-                  return comments;
-                })}
-              </div>
-            );
-          })}
-      </div>
+     </div>
 
       <h1 className="AllSub">Meus Jardins</h1>
       {!isLoading &&
@@ -293,19 +266,25 @@ function Profile() {
           console.log(garden);
 
           return (
-            <Card style={{ width: "18rem" }}>
+              <Card style={{ width: "18rem", marginTop:"16px" }}>
               <Card.Body>
-                <Card.Title>nome: {garden.name} </Card.Title>
+                <Card.Title>
+                <p className="profileCardTitle">
+                <strong>{garden.name}</strong>
+                </p>
+                </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  local: {garden.local}
+                <p className="profileCardSub">
+                  <strong>local:</strong> {garden.local}
+                </p>
                 </Card.Subtitle>
                 <Card.Text>
-                  <p>
-                    postado em: {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                  <p className="profileCardText">
+                    <strong>postado em:</strong> {dd}/{mm}/{aa} - {hh}:{min}{" "}
                   </p>
                 </Card.Text>
                 <Card.Link>
-                  <Link to={`/mygarden/${garden._id}`}>Explore seu Jardim</Link>
+                  <Link to={`/mygarden/${garden._id}`} className="profileCardLink">Explore seu Jardim</Link>
                 </Card.Link>
                 {garden.comments.length > 0 && <h2>Comentários:</h2>}
                 {garden.comments.map((comments) => {
