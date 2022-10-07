@@ -276,6 +276,7 @@ function Profile() {
 
           </form>
         </div>
+<<<<<<< HEAD
 
       
         {!isLoading &&
@@ -303,6 +304,9 @@ function Profile() {
                 </div>
               );
             })}
+=======
+     </div>
+>>>>>>> 7c7641ddf8625654f4b3569008603917d7a726cb
 
       
       <h1 className="AllSub">Meus Jardins</h1>
@@ -319,15 +323,15 @@ function Profile() {
           console.log(garden);
 
           return (
-            <Card style={{ width: "18rem" }}>
+              <Card style={{ width: "18rem", marginTop:"16px" }}>
               <Card.Body>
-                <Card.Title>nome: {garden.name} </Card.Title>
+                <Card.Title><strong>nome:</strong> {garden.name} </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  local: {garden.local}
+                  <strong>local:</strong> {garden.local}
                 </Card.Subtitle>
                 <Card.Text>
                   <p>
-                    postado em: {dd}/{mm}/{aa} - {hh}:{min}{" "}
+                    <strong>postado em:</strong> {dd}/{mm}/{aa} - {hh}:{min}{" "}
                   </p>
                 </Card.Text>
                 <Card.Link>
