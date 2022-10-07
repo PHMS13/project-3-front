@@ -32,8 +32,6 @@ function Profile() {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
 
-  
-
   console.log(formGarden);
 
   //states das perguntas
@@ -88,13 +86,11 @@ function Profile() {
       setFormGarden({
         name: "",
         local: "",
-      })
+      });
     } catch (error) {
       console.log(error);
     }
   }
-
-
 
   // async function handledeleteGarden(e) {
 
@@ -108,20 +104,18 @@ function Profile() {
   //   }
   // }
 
-
   console.log(user);
   console.log(isLoading);
 
   return (
-    <div style={{backgroundColor:"#EDDDD6"}} >
+    <div style={{ backgroundColor: "#EDDDD6" }}>
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-        }}
-      >
+        }}>
         <h1 className="AllSub">Meu Perfil</h1>
 
         <img src={profileImage} alt="plantinha" className="profileImg" />
@@ -141,8 +135,7 @@ function Profile() {
             color: "white",
             borderColor: "#7C6053",
             margin: "10px",
-          }}
-        >
+          }}>
           Editar Perfil
         </Button>
         <button
@@ -153,8 +146,7 @@ function Profile() {
             color: "white",
             borderColor: "#7C6053",
             margin: "10px",
-          }}
-        >
+          }}>
           Sair
         </button>
       </div>
@@ -202,8 +194,7 @@ function Profile() {
           flexDirection: "column",
           alignItems: "stretch",
           flexWrap: "nowrap",
-        }}
-      >
+        }}>
         <div className="barraSupinpa" style={{ display: "flex" }}>
           <h2 className="AllSub">Crie um Jardim</h2>
           <form onSubmit={handleSubmitGarden}>
@@ -220,25 +211,32 @@ function Profile() {
             <div style={{ display: "flex", margin: " 10px" }}>
               <label style={{ margin: " 10px" }}> Local do Jardim </label>
               <select
-              required
-              id="formSelect"
-              name="livingSpace"
-              onChange={handleChange}
-              defaultValue={form.residence}
-            >
-              <option value=""></option>
-              <option value="Quintal">Quintal</option>
-              <option value="Varanda">Varanda</option>
-              <option value="Sala">Sala</option>
-              <option value="Quarto">Quarto</option>
-              <option value="Cozinha">Cozinha</option>
-              <option value="Banheiro">Banheiro</option>
-              <option value="Lavanderia">Lavanderia</option>
-              <option value="Outro">Outro</option>
-            </select>
+                required
+                id="formSelect"
+                name="local"
+                onChange={handleChange}
+                defaultValue={formGarden.local}>
+                <option value=""></option>
+                <option value="Quintal">Quintal</option>
+                <option value="Varanda">Varanda</option>
+                <option value="Sala">Sala</option>
+                <option value="Quarto">Quarto</option>
+                <option value="Cozinha">Cozinha</option>
+                <option value="Banheiro">Banheiro</option>
+                <option value="Lavanderia">Lavanderia</option>
+                <option value="Outro">Outro</option>
+              </select>
             </div>
 
-            <button className="btn btn-light btn-outline-dark btn-sm me-2" style={{ backgroundColor:"#dc3545", color:"white", borderColor:"#dc3545" }}>Deletar Jardim</button>
+            <button
+              className="btn btn-light btn-outline-dark btn-sm me-2"
+              style={{
+                backgroundColor: "#dc3545",
+                color: "white",
+                borderColor: "#dc3545",
+              }}>
+              Deletar Jardim
+            </button>
 
             <Button
               type="submit"
@@ -247,11 +245,9 @@ function Profile() {
                 backgroundColor: "#7C6053",
                 color: "white",
                 borderColor: "#7C6053",
-              }}
-            >
+              }}>
               Salvar Jardim
             </Button>
-
           </form>
         </div>
 
