@@ -15,6 +15,8 @@ function MyGarden() {
   const [isLoading, setIsLoading] = useState(true);
   const [reload, setReload] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [user, setUser] = useState({});
+  const [isMy, setIsMy] = useState(true);
 
   const { idGarden } = useParams();
   const navigate = useNavigate();
@@ -39,11 +41,13 @@ function MyGarden() {
       try {
         setIsLoading(true);
         const response = await api.get(`/garden/one-garden/${idGarden}`);
+        const response1 = await api.get(`/users/profile`);
         setOneGarden(response.data);
         setFormGarden({
           name: response.data.name,
           local: response.data.local,
         });
+        setUser({ ...response1.data });
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -51,6 +55,23 @@ function MyGarden() {
     }
     fetchmyGarden();
   }, [reload]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const myGarden = user.garden.filter(
+        (element) => element._id === idGarden
+      );
+
+      if (myGarden.length == 0) {
+        setIsMy(false);
+      } else {
+        setIsMy(true);
+      }
+
+      console.log(myGarden);
+    }
+  }, [isLoading]);
+  console.log(isMy);
 
   //fazer um map dessa array que voltou da api. oneGarden.plants.map()
 
@@ -161,13 +182,31 @@ function MyGarden() {
           <label>Local do Jardim:</label>
           <input name="local" value={formGarden.local} onChange={handleEdit} id="inscreverInfo"/>
 
+              <Button
+                type="submit"
+                className="btn btn-light btn-outline-dark btn-sm me-2"
+                style={{
+                  backgroundColor: "#7C6053",
+                  color: "white",
+                  borderColor: "#7C6053",
+                }}>
+                Salvar Alterações
+              </Button>
+
+              <Button variant="danger" onClick={handleDeleteGarden}>
+                Deletar Jardim
+              </Button>
+            </form>
+          )}
           <Button
+            onClick={toggleform}
             type="submit"
             className="btn btn-light btn-outline-dark btn-sm me-2"
             style={{
               backgroundColor: "#7C6053",
               color: "white",
               borderColor: "#7C6053",
+
               marginTop: "20px",
             }}
           >
@@ -182,6 +221,7 @@ function MyGarden() {
             Deletar Jardim
           </Button>
         </form>
+
       )}
       <div>
         {!isLoading &&
@@ -197,8 +237,7 @@ function MyGarden() {
                     borderColor: "#E7E7E7 1.2px",
                     padding: "12px",
                     borderRadius: "12px",
-                  }}
-                >
+                  }}>
                   <Card.Img variant="top" src={plant.plantImage} />
                   <Card.Body>
                     <Card.Title>{plant.popularName}</Card.Title>
@@ -221,9 +260,11 @@ function MyGarden() {
                 {oneGarden.author == loggedInUser.user._id && (
                   <Button
                     onClick={() => handleDeletePlant(plant._id)}
+
                     variant="danger"
                     style={{ fontSize: "14px", marginBottom: "30px" }}
                   >
+
                     {" "}
                     Deletar Planta
                   </Button>
@@ -245,12 +286,14 @@ function MyGarden() {
                 justifyContent: "center",
                 alignItems: "center",
               }}
+
               onSubmit={handleSubmit}
             >
               <h2
                 className="AllSub"
                 style={{ marginTop: "300px", width: "180px" }}
               >
+
                 Adicione uma planta nova ao seu Jardim!
               </h2>
 
@@ -328,9 +371,11 @@ function MyGarden() {
                   backgroundColor: "#7C6053",
                   color: "white",
                   borderColor: "#7C6053",
+
                   padding: "10px",
                 }}
               >
+
                 Adicionar uma planta
               </Button>
             </form>
