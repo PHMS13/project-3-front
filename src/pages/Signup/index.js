@@ -87,12 +87,15 @@ function Signup() {
           marginBottom: "30px",
         }}
       >
+
         <h1 className="formTitle">Inscreva-se</h1>
         <img src={formHead} className="formHead" alt="form" />
       </div>
 
       <form id="inscreverForm" onSubmit={handleSubmit}>
+
         <label htmlFor="formName">Nome: *</label>
+
         <input
           id="inscreverInfo"
           name="username"
@@ -102,6 +105,7 @@ function Signup() {
         />
 
         <label htmlFor="formEmail">E-mail: *</label>
+
         <input
           id="inscreverInfo"
           name="email"
@@ -111,6 +115,7 @@ function Signup() {
         />
 
         <label htmlFor="formPassword">Senha: *</label>
+
         <input
           id="inscreverInfo"
           name="password"
@@ -120,6 +125,7 @@ function Signup() {
         />
 
         <label htmlFor="formConfirmPassword">Confirmação de senha: *</label>
+
         <input
           id="inscreverInfo"
           type="password"
@@ -138,6 +144,7 @@ function Signup() {
         {img && <img style={{ maxHeight: "260px" }} src={preview} alt="" />}
 
         <label htmlFor="formAge">Idade:</label>
+
         <input
           id="inscreverInfo"
           name="age"
@@ -147,6 +154,7 @@ function Signup() {
         />
 
         <label htmlFor="formCountry">País: *</label>
+
         <input
           id="inscreverInfo"
           name="country"
@@ -156,6 +164,7 @@ function Signup() {
         />
 
         <label htmlFor="formCity">Cidade: *</label>
+
         <input
           id="inscreverInfo"
           name="city"
@@ -166,6 +175,7 @@ function Signup() {
 
         <label id="label" htmlFor="formResidence">
           Residência: *
+
         </label>
         <select
           required
@@ -174,6 +184,7 @@ function Signup() {
           onChange={handleChange}
           defaultValue={form.residence}
         >
+
           <option value=""></option>
           <option value="Apartamento">Apartamento</option>
           <option value="Casa">Casa</option>
