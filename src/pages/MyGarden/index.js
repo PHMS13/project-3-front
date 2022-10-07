@@ -115,7 +115,7 @@ function MyGarden() {
 
   async function handleSubmitGarden(e) {
     e.preventDefault();
-
+    console.log(formGarden);
     try {
       await api.put(`/garden/edit/${idGarden}`, formGarden);
       setReload(!reload);
@@ -176,43 +176,40 @@ function MyGarden() {
       )}
 
       {showForm && (
-        <form onSubmit={handleSubmitGarden}>
-          <label>Nome do Jardim:</label>
-          <input name="name" value={formGarden.name} onChange={handleEdit} id="inscreverInfo"/>
-          <label>Local do Jardim:</label>
-          <input name="local" value={formGarden.local} onChange={handleEdit} id="inscreverInfo"/>
+        <>
+          <form onSubmit={handleSubmitGarden}>
+            <label>Nome do Jardim:</label>
+            <input
+              name="name"
+              value={formGarden.name}
+              onChange={handleEdit}
+              id="inscreverInfo"
+            />
+            <label>Local do Jardim:</label>
+            <input
+              name="local"
+              value={formGarden.local}
+              onChange={handleEdit}
+              id="inscreverInfo"
+            />
 
-              <Button
-                type="submit"
-                className="btn btn-light btn-outline-dark btn-sm me-2"
-                style={{
-                  backgroundColor: "#7C6053",
-                  color: "white",
-                  borderColor: "#7C6053",
-                }}>
-                Salvar Alterações
-              </Button>
+            <Button
+              onClick={(e) => {
+                toggleform();
+                handleSubmitGarden(e);
+              }}
+              className="btn btn-light btn-outline-dark btn-sm me-2"
+              style={{
+                backgroundColor: "#7C6053",
+                color: "white",
+                borderColor: "#7C6053",
 
-              <Button variant="danger" onClick={handleDeleteGarden}>
-                Deletar Jardim
-              </Button>
-            </form>
-          )}
-          <Button
-            onClick={toggleform}
-            type="submit"
-            className="btn btn-light btn-outline-dark btn-sm me-2"
-            style={{
-              backgroundColor: "#7C6053",
-              color: "white",
-              borderColor: "#7C6053",
-
-              marginTop: "20px",
-            }}
-          >
-            Salvar Alterações
-          </Button>
-
+                marginTop: "20px",
+              }}
+            >
+              Salvar Alterações
+            </Button>
+          </form>
           <Button
             variant="danger"
             onClick={handleDeleteGarden}
@@ -220,8 +217,7 @@ function MyGarden() {
           >
             Deletar Jardim
           </Button>
-        </form>
-
+        </>
       )}
       <div>
         {!isLoading &&
@@ -237,7 +233,8 @@ function MyGarden() {
                     borderColor: "#E7E7E7 1.2px",
                     padding: "12px",
                     borderRadius: "12px",
-                  }}>
+                  }}
+                >
                   <Card.Img variant="top" src={plant.plantImage} />
                   <Card.Body>
                     <Card.Title>{plant.popularName}</Card.Title>
@@ -260,11 +257,9 @@ function MyGarden() {
                 {oneGarden.author == loggedInUser.user._id && (
                   <Button
                     onClick={() => handleDeletePlant(plant._id)}
-
                     variant="danger"
                     style={{ fontSize: "14px", marginBottom: "30px" }}
                   >
-
                     {" "}
                     Deletar Planta
                   </Button>
@@ -286,14 +281,12 @@ function MyGarden() {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-
               onSubmit={handleSubmit}
             >
               <h2
                 className="AllSub"
                 style={{ marginTop: "300px", width: "180px" }}
               >
-
                 Adicione uma planta nova ao seu Jardim!
               </h2>
 
@@ -375,7 +368,6 @@ function MyGarden() {
                   padding: "10px",
                 }}
               >
-
                 Adicionar uma planta
               </Button>
             </form>
