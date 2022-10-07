@@ -157,9 +157,19 @@ function MyGarden() {
       {showForm && (
         <form onSubmit={handleSubmitGarden}>
           <label>Nome do Jardim:</label>
-          <input name="name" value={formGarden.name} onChange={handleEdit} id="inscreverInfo"/>
+          <input
+            name="name"
+            value={formGarden.name}
+            onChange={handleEdit}
+            id="inscreverInfo"
+          />
           <label>Local do Jardim:</label>
-          <input name="local" value={formGarden.local} onChange={handleEdit} id="inscreverInfo"/>
+          <input
+            name="local"
+            value={formGarden.local}
+            onChange={handleEdit}
+            id="inscreverInfo"
+          />
 
           <Button
             type="submit"
