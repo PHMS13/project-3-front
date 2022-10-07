@@ -145,8 +145,6 @@ function MyGarden() {
           </Button>
 
           <Button variant="danger">Deletar Jardim</Button>
-            
-        
         </form>
       )}
       <Button

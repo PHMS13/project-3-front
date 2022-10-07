@@ -1,3 +1,12 @@
+# Jungle85.2 
+
+Nosso projeto se trata de um aplicativo que ajuda pessoas a encontrar as melhores opções de plantas para o ambiente desejado baseado nos cuidados e luminosidade de cada ambiente.
+
+# 🚀  Começando
+
+Clique aqui pra conhecer o nosso Jardim: https://garden-85-wd.netlify.app 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
