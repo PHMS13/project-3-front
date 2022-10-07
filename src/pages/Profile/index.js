@@ -323,17 +323,23 @@ function Profile() {
             <div>
               <Card style={{ width: "18rem", marginTop:"16px" }}>
               <Card.Body>
-                <Card.Title><strong>nome:</strong> {garden.name} </Card.Title>
+                <Card.Title>
+                <p className="profileCardTitle">
+                <strong>{garden.name}</strong>
+                </p>
+                </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
+                <p className="profileCardSub">
                   <strong>local:</strong> {garden.local}
+                </p>
                 </Card.Subtitle>
                 <Card.Text>
-                  <p>
+                  <p className="profileCardText">
                     <strong>postado em:</strong> {dd}/{mm}/{aa} - {hh}:{min}{" "}
                   </p>
                 </Card.Text>
                 <Card.Link>
-                  <Link to={`/mygarden/${garden._id}`}>Explore seu Jardim</Link>
+                  <Link to={`/mygarden/${garden._id}`} className="profileCardLink">Explore seu Jardim</Link>
                 </Card.Link>
                 {garden.comments.length > 0 && <h2>Comentários:</h2>}
                 {garden.comments.map((comments) => {
