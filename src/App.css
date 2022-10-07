@@ -3,7 +3,7 @@
 .App {
   text-align: center;
   background: #edddd6;
-  height: 100vh;
+  height: 240vh;
 }
 
 .App-logo {
@@ -617,6 +617,32 @@ Form {
   max-width: 840px;
 }
 
+/*------------MYGARDEN-----------------*/
+
+.myGardenSub {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: #7c6053;
+  margin-top: 20px;
+}
+
+.myGardenTxt {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #7c6053;
+  margin-bottom: 20px;
+}
+
+.myGardenAdd {
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: #7C6053;
+  margin: 5px;
+  margin-top: 10px;
+}
 
 
 @media (max-width: 521px) {

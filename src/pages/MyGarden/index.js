@@ -140,28 +140,47 @@ function MyGarden() {
     }
   }
 
-  console.log(idGarden);
-  console.log(user);
+  console.log(oneGarden);
   return (
-    <div>
-      <h2 className="AllSub">Nome do Jardim:</h2> <h4>{oneGarden.name}</h4>
-      <h3 className="AllSub">Local: </h3> <h4>{oneGarden.local}</h4>
-      {!isLoading && isMy && (
-        <>
-          {showForm && (
-            <form onSubmit={handleSubmitGarden}>
-              <label>Nome do Jardim:</label>
-              <input
-                name="name"
-                value={formGarden.name}
-                onChange={handleEdit}
-              />
-              <label>Local do Jardim:</label>
-              <input
-                name="local"
-                value={formGarden.local}
-                onChange={handleEdit}
-              />
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <h2
+        className="AllSub"
+        style={{
+          textAlign: "center",
+          fontSize: "24px",
+          marginTop: "30px",
+          color: "#507849",
+        }}
+      >
+        {oneGarden.name}
+      </h2>
+
+      <h4 className="myGardenTxt">{oneGarden.local}</h4>
+      {loggedInUser.user._id == oneGarden.author && (
+        <Button
+          onClick={toggleform}
+          type="submit"
+          className="btn btn-light btn-outline-dark btn-sm me-2"
+          style={{
+            backgroundColor: "#7C6053",
+            color: "white",
+            borderColor: "#7C6053",
+            marginTop: "0px",
+            marginBottom: "30px",
+          }}
+        >
+          Editar Jardim
+        </Button>
+      )}
+
+      {showForm && (
+        <form onSubmit={handleSubmitGarden}>
+          <label>Nome do Jardim:</label>
+          <input name="name" value={formGarden.name} onChange={handleEdit} id="inscreverInfo"/>
+          <label>Local do Jardim:</label>
+          <input name="local" value={formGarden.local} onChange={handleEdit} id="inscreverInfo"/>
 
               <Button
                 type="submit"
@@ -187,10 +206,22 @@ function MyGarden() {
               backgroundColor: "#7C6053",
               color: "white",
               borderColor: "#7C6053",
-            }}>
-            Editar Jardim
+
+              marginTop: "20px",
+            }}
+          >
+            Salvar Alterações
           </Button>
-        </>
+
+          <Button
+            variant="danger"
+            onClick={handleDeleteGarden}
+            style={{ fontSize: "14px", marginTop: "20px" }}
+          >
+            Deletar Jardim
+          </Button>
+        </form>
+
       )}
       <div>
         {!isLoading &&
@@ -229,8 +260,11 @@ function MyGarden() {
                 {oneGarden.author == loggedInUser.user._id && (
                   <Button
                     onClick={() => handleDeletePlant(plant._id)}
-                    className="btn btn-light btn-outline-dark btn-sm me-2"
-                    variant="danger">
+
+                    variant="danger"
+                    style={{ fontSize: "14px", marginBottom: "30px" }}
+                  >
+
                     {" "}
                     Deletar Planta
                   </Button>
@@ -252,56 +286,83 @@ function MyGarden() {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-              onSubmit={handleSubmit}>
-              <h2 className="AllSub">
+
+              onSubmit={handleSubmit}
+            >
+              <h2
+                className="AllSub"
+                style={{ marginTop: "300px", width: "180px" }}
+              >
+
                 Adicione uma planta nova ao seu Jardim!
               </h2>
 
-              <label>Nome popular:</label>
+              <label className="myGardenAdd">Nome popular:</label>
               <input
                 name="popularName"
                 value={form.popularName}
                 onChange={handleChange}
+                id="inscreverInfo"
               />
 
-              <label>Nome Científico:</label>
+              <label className="myGardenAdd">Nome científico:</label>
               <input
                 name="scientificName"
                 value={form.scientificName}
                 onChange={handleChange}
+                id="inscreverInfo"
               />
 
-              <label>Origem:</label>
+              <label className="myGardenAdd">Origem:</label>
               <input
                 name="origin"
                 value={form.origin}
                 onChange={handleChange}
-                min={1}
-                max={5}
+                id="inscreverInfo"
               />
 
-              <label>Nível de Cuidado:</label>
-              <input
-                type="number"
-                min={1}
-                max={5}
+              <label className="myGardenAdd">Nível de Cuidado:</label>
+              <select
+                required
+                id="formSelect"
                 name="care"
-                value={form.care}
                 onChange={handleChange}
-              />
+                defaultValue={formGarden.care}
+              >
+                <option value=""></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
-              <label>Nível de Luminosidade:</label>
-              <input
-                type="number"
-                min={1}
-                max={5}
+              <label className="myGardenAdd">Nível de Luminosidade:</label>
+              <select
+                required
+                id="formSelect"
                 name="luminosity"
-                value={form.luminosity}
                 onChange={handleChange}
-              />
+                defaultValue={formGarden.luminosity}
+              >
+                <option value=""></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
-              <label>Informações:</label>
-              <input name="info" value={form.info} onChange={handleChange} />
+              <label className="myGardenAdd">Informações:</label>
+              <input
+                name="info"
+                value={form.info}
+                onChange={handleChange}
+                style={{ marginBottom: "30px" }}
+                id="inscreverInfo"
+              />
 
               <Button
                 type="submit"
@@ -310,7 +371,11 @@ function MyGarden() {
                   backgroundColor: "#7C6053",
                   color: "white",
                   borderColor: "#7C6053",
-                }}>
+
+                  padding: "10px",
+                }}
+              >
+
                 Adicionar uma planta
               </Button>
             </form>

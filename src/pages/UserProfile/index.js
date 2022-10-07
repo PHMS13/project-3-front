@@ -9,16 +9,12 @@ import profileImage from "../../assets/05 - Imagem.png";
 
 function UserProfile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
-
   const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
   const { idUser } = useParams();
-
   const [img, setImg] = useState("");
   const [reload, setReload] = useState(true);
-
   const [showForm, setShowForm] = useState(false);
-
   const navigate = useNavigate();
 
   const [formGarden, setFormGarden] = useState({
@@ -29,9 +25,7 @@ function UserProfile() {
   function handleChange(e) {
     setFormGarden({ ...formGarden, [e.target.name]: e.target.value });
   }
-
   console.log(formGarden);
-
   //states das perguntas
 
   const [form, setForm] = useState({
@@ -141,7 +135,6 @@ function UserProfile() {
             const dd = date.getDate();
             const mm = date.getMonth() + 1; //janeiro = 0, então precisamos adicionar +1. Isso é só com o mês mesmo.
             const aa = date.getFullYear();
-
             const hh = date.getHours();
             const min = date.getMinutes();
             console.log(garden);
@@ -185,5 +178,4 @@ function UserProfile() {
     </div>
   );
 }
-
 export default UserProfile;
