@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useParams } from "react";
 
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,20 +6,20 @@ import EditUser from "../../components/EditUser";
 import Card from "react-bootstrap/Card";
 
 import profileImage from "../../assets/05 - Imagem.png";
-import Quiz from "../Quiz";
 
-import { Button, Accordion } from "react-bootstrap";
 
-function Profile() {
+function UserProfile() {
   //const decoratedOnClick = useAccordionButton(eventKey, onClick);
 
   const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
+  const { idUser } = useParams();
 
   const [img, setImg] = useState("");
   const [reload, setReload] = useState(true);
 
   const [showForm, setShowForm] = useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -35,8 +35,6 @@ function Profile() {
   console.log(formGarden);
 
   //states das perguntas
-  const [luminosidade, setLuminosidade] = useState(0);
-  const [cuidado, setCuidado] = useState(0);
 
   const [form, setForm] = useState({
     profileImage: "",
@@ -52,7 +50,7 @@ function Profile() {
     async function fetchUser() {
       setIsLoading(true);
       try {
-        const response = await api.get("/users/profile");
+        const response = await api.get(`/users/user/${idUser}`);
         setUser(response.data);
 
         setForm(response.data);
@@ -77,7 +75,20 @@ function Profile() {
   }
   console.log(user);
 
+  async function handleSubmitGarden(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post(`/garden/create`, formGarden);
 
+      setReload(!reload);
+      setFormGarden({
+        name: "",
+        local: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   console.log(user);
   console.log(isLoading);
@@ -92,7 +103,7 @@ function Profile() {
           justifyContent: "space-between",
         }}
       >
-        <h1 className="AllSub">Meu Perfil</h1>
+        <h1 className="AllSub">Perfil do Jardineiro</h1>
 
         <img src={profileImage} alt="plantinha" className="profileImg" />
       </div>
@@ -104,17 +115,7 @@ function Profile() {
         </span>
         <span style={{ marginRight: "12px" }}>{user.age} anos</span>
 
-        <Button
-          onClick={() => setShowForm(!showForm)}
-          className="btn btn-light btn-outline-dark btn-sm me-2"
-          style={{
-            backgroundColor: "#7C6053",
-            color: "white",
-            borderColor: "#7C6053",
-            margin: "10px",
-          }}
-        >
-      
+      </div>
 
       {showForm === true && (
         <EditUser
@@ -127,64 +128,9 @@ function Profile() {
           showForm={showForm}
         />
       )}
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "stretch",
-          flexWrap: "nowrap",
-        }}
-      >
-        <div className="barraSupinpa" style={{ display: "flex" }}>
-          <h2 className="AllSub">Crie um Jardim</h2>
-          <form onSubmit={handleSubmitGarden}>
-            <div style={{ display: "flex", margin: " 10px" }}>
-              <label> Nome do jardim </label>
-
-              <input
-                name="name"
-                value={formGarden.name}
-                onChange={handleChange}
-              />
-            </div>
-
-            <label id="label" htmlFor="formResidence">
-              Local:
-            </label>
-            <select
-              required
-              id="formSelect"
-              name="local"
-              onChange={handleChange}
-              defaultValue={formGarden.local}
-            >
-              <option value=""></option>
-              <option value="Quintal">Quintal</option>
-              <option value="Varanda">Varanda</option>
-              <option value="Sala">Sala</option>
-              <option value="Quarto">Quarto</option>
-              <option value="Cozinha">Cozinha</option>
-              <option value="Banheiro">Banheiro</option>
-              <option value="Lavanderia">Lavanderia</option>
-              <option value="Outro">Outro</option>
-            </select>
-            <Button
-              type="submit"
-              className="btn btn-light btn-outline-dark btn-sm me-2"
-              style={{
-                backgroundColor: "#7C6053",
-                color: "white",
-                borderColor: "#7C6053",
-              }}
-            >
-              Salvar Jardim
-            </Button>
-          </form>
-        </div>
-      </div>
-      <div>
-        <h1 className="AllSub">Meus Jardins</h1>
+       
+      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}} >
+        <h1 className="AllSub" style={{color:"#507849"}} >Meus Jardins</h1>
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
@@ -221,7 +167,7 @@ function Profile() {
                         to={`/mygarden/${garden._id}`}
                         className="profileCardLink"
                       >
-                        Explore seu Jardim
+                        Explore estes jardins
                       </Link>
                     </Card.Link>
                     {garden.comments.length > 0 && <h2>Comentários:</h2>}
@@ -238,4 +184,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserProfile;
