@@ -263,7 +263,7 @@ function Profile() {
             </form>
           </div>
 
-          <h1>Meus Jardins</h1>
+      
           {!isLoading &&
             user.garden.map((garden) => {
               const date = new Date(garden.createdAt);
