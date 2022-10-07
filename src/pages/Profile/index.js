@@ -223,8 +223,10 @@ function Profile() {
                 value={formGarden.local}
                 onChange={handleChange}
               />
-
+              </div>
+            </form>
             </div>
+
             <Button
               type="submit"
               className="btn btn-light btn-outline-dark btn-sm me-2"
@@ -236,7 +238,6 @@ function Profile() {
             >
               Salvar Jardim
             </Button>
-          
 
               <label id="label" htmlFor="formResidence">
                 Local:
@@ -247,7 +248,7 @@ function Profile() {
               name="livingSpace"
               onChange={handleChange}
               defaultValue={form.residence}
-            >
+              >
               <option value=""></option>
               <option value="Quintal">Quintal</option>
               <option value="Varanda">Varanda</option>
@@ -270,15 +271,12 @@ function Profile() {
                 color: "white",
                 borderColor: "#7C6053",
               }}
-            >
+              >
               Salvar Jardim
             </Button>
 
           </form>
-        </div>
-<<<<<<< HEAD
-
-      
+        
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
@@ -304,12 +302,11 @@ function Profile() {
                 </div>
               );
             })}
-=======
-     </div>
->>>>>>> 7c7641ddf8625654f4b3569008603917d7a726cb
+
 
       
       <h1 className="AllSub">Meus Jardins</h1>
+
       {!isLoading &&
         user.garden.map((garden) => {
           const date = new Date(garden.createdAt);
@@ -323,6 +320,7 @@ function Profile() {
           console.log(garden);
 
           return (
+            <div>
               <Card style={{ width: "18rem", marginTop:"16px" }}>
               <Card.Body>
                 <Card.Title><strong>nome:</strong> {garden.name} </Card.Title>
