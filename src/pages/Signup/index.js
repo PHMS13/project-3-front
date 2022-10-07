@@ -64,7 +64,11 @@ function Signup() {
 
     try {
       const imgURL = await handleUpload();
-      await api.post("/users/sign-up", { ...form, img: imgURL });
+      const response = await api.post("/users/sign-up", {
+        ...form,
+        img: imgURL,
+      });
+      console.log(response);
 
       navigate("/login");
       toast.success("Usuário criado com sucesso!");
@@ -85,15 +89,12 @@ function Signup() {
           alignItems: "center",
           justifyContent: "center",
           marginBottom: "30px",
-        }}
-      >
-
+        }}>
         <h1 className="formTitle">Inscreva-se</h1>
         <img src={formHead} className="formHead" alt="form" />
       </div>
 
       <form id="inscreverForm" onSubmit={handleSubmit}>
-
         <label htmlFor="formName">Nome: *</label>
 
         <input
@@ -175,16 +176,13 @@ function Signup() {
 
         <label id="label" htmlFor="formResidence">
           Residência: *
-
         </label>
         <select
           required
           id="formSelect"
           name="residence"
           onChange={handleChange}
-          defaultValue={form.residence}
-        >
-
+          defaultValue={form.residence}>
           <option value=""></option>
           <option value="Apartamento">Apartamento</option>
           <option value="Casa">Casa</option>
