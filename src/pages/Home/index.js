@@ -13,7 +13,7 @@ function Home() {
             fazer o seu ambiente ficar ainda mais aconchegante e verde! <strong>Sinta-se
             à vontade por aqui!</strong>
           </p>
-          <div style={{display: "flex", alignItems: "center", flexDirection: "column", flexWrap: "nowrap"}}>{/*  nessa div, flex flex direction coll */}
+          <div style={{display: "flex", alignItems: "center", flexDirection: "column", flexWrap: "nowrap"}}>
             <Link to="/signup">
               <button className="homeInicio1">Cadastre-se</button>
             </Link>
