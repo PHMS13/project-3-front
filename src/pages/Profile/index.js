@@ -16,7 +16,7 @@ function Profile() {
   const [user, setUser] = useState({ username: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
 
-  const [img, setImg] = useState("");
+  //const [img, setImg] = useState("");
   const [reload, setReload] = useState(true);
 
   const [showForm, setShowForm] = useState(false);
@@ -80,7 +80,7 @@ function Profile() {
   async function handleSubmitGarden(e) {
     e.preventDefault();
     try {
-      const response = await api.post(`/garden/create`, formGarden);
+      //const response = await api.post(`/garden/create`, formGarden);
 
       setReload(!reload);
       setFormGarden({
@@ -239,7 +239,7 @@ function Profile() {
         </div>
       </div>
       <div style={{display:"flex", flexDirection:"column", alignItems:"center"}} >
-        <h1 className="AllSub" style={{color:"#507849"}} >Meus Jardins</h1>
+        <h1 className="AllSub" style={{color:"#507849"}}>Meus Jardins</h1>
         {!isLoading &&
           user.garden.map((garden) => {
             const date = new Date(garden.createdAt);
